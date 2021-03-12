@@ -28,8 +28,8 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
             case "number":
                 lowerValue = facet.filterLowerBound as number;
                 upperValue = facet.filterUpperBound as number;
-                lowerLabel = Numeral(facet.filterLowerBound).format("0a");
-                upperLabel = Numeral(facet.filterUpperBound).format("0a");
+                lowerLabel = Numeral(facet.filterLowerBound).format("0,0");
+                upperLabel = Numeral(facet.filterUpperBound).format("0,0");
                 minValue = facet.min as number;
                 maxValue = facet.max as number;
                 break;
@@ -53,8 +53,7 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
             let upper = isDate ? new Date(value[1]) : value[1];
             onRangeChange(lower, upper);
         };
-        let upperBoundLabel = facet.filterUpperBound === facet.max ? " <" : "";
-
+        // todo add [ ] to [ ] date ranges
         return (
             <div className={css.searchFacets__rangeFacet}>
                 <div className={css.searchFacets__facetHeaderContainer}>
@@ -84,7 +83,7 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                             </span>
                             <span className={css.searchFacets__facetControlRangeLabelRange}>  <b> {" < (" + Numeral(facet.middleBucketCount).format("0,0") + ") < "} </b> </span>
                             <span className={css.searchFacets__facetControlRangeLabelMax}>
-                                {upperLabel} {upperBoundLabel}
+                                {upperLabel} 
                             </span>
                         </li>
                     </ul>

@@ -21,7 +21,7 @@ var Results = (function (_super) {
     Results.prototype.render = function () {
         var _a = this.props, results = _a.results, template = _a.template, skip = _a.skip, top = _a.top, count = _a.count;
         var css = objAssign({}, css_1.defaultCss, this.props.css);
-        var countElement = count > 0 ? " of " + count : "";
+        var countElement = count > 0 ? " of " + count.toLocaleString() : "";
         var bottomRange = skip + 1;
         var topRange = skip + top;
         topRange = topRange > count ? count : topRange;

@@ -37,8 +37,8 @@ var RangeFacet = (function (_super) {
             case "number":
                 lowerValue = facet.filterLowerBound;
                 upperValue = facet.filterUpperBound;
-                lowerLabel = Numeral(facet.filterLowerBound).format("0a");
-                upperLabel = Numeral(facet.filterUpperBound).format("0a");
+                lowerLabel = Numeral(facet.filterLowerBound).format("0,0");
+                upperLabel = Numeral(facet.filterUpperBound).format("0,0");
                 minValue = facet.min;
                 maxValue = facet.max;
                 break;
@@ -67,7 +67,7 @@ var RangeFacet = (function (_super) {
             var upper = isDate ? new Date(value[1]) : value[1];
             onRangeChange(lower, upper);
         };
-        var upperBoundLabel = facet.filterUpperBound === facet.max ? " <" : "";
+        // todo add [ ] to [ ] date ranges
         return (React.createElement("div", { className: css.searchFacets__rangeFacet },
             React.createElement("div", { className: css.searchFacets__facetHeaderContainer },
                 React.createElement("h4", { className: css.searchFacets__facetHeader },
@@ -89,10 +89,7 @@ var RangeFacet = (function (_super) {
                                 " < (" + Numeral(facet.middleBucketCount).format("0,0") + ") < ",
                                 " "),
                             " "),
-                        React.createElement("span", { className: css.searchFacets__facetControlRangeLabelMax },
-                            upperLabel,
-                            " ",
-                            upperBoundLabel))))));
+                        React.createElement("span", { className: css.searchFacets__facetControlRangeLabelMax }, upperLabel))))));
     };
     return RangeFacet;
 }(React.PureComponent));
