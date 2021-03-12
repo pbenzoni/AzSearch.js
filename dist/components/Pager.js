@@ -13,7 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var objAssign = require("object-assign");
 var css_1 = require("../utils/css");
-var Pager = /** @class */ (function (_super) {
+var Pager = (function (_super) {
     __extends(Pager, _super);
     function Pager() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -67,7 +67,6 @@ var Pager = /** @class */ (function (_super) {
                 addElipsesAndMaxPage(pagerButtons);
             }
         }
-        // else << 1 ... 4 5 ... pageMax >>
         else {
             pagerButtons.push(generateButton(1, false, false));
             pagerButtons.push(React.createElement("li", { className: css.pager__pageItemDisabled },

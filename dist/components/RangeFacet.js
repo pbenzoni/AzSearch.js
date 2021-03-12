@@ -15,7 +15,7 @@ var objAssign = require("object-assign");
 var css_1 = require("../utils/css");
 var rc_slider_1 = require("rc-slider");
 var Numeral = require("numeral");
-var RangeFacet = /** @class */ (function (_super) {
+var RangeFacet = (function (_super) {
     __extends(RangeFacet, _super);
     function RangeFacet() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -37,25 +37,25 @@ var RangeFacet = /** @class */ (function (_super) {
             case "number":
                 lowerValue = facet.filterLowerBound;
                 upperValue = facet.filterUpperBound;
-                lowerLabel = Numeral(facet.filterLowerBound).format("0.0a");
-                upperLabel = Numeral(facet.filterUpperBound).format("0.0a");
+                lowerLabel = Numeral(facet.filterLowerBound).format("0a");
+                upperLabel = Numeral(facet.filterUpperBound).format("0a");
                 minValue = facet.min;
                 maxValue = facet.max;
                 break;
             case "date":
-                lowerValue = facet.filterLowerBound.getTime();
-                upperValue = facet.filterUpperBound.getTime();
+                var lowerDate = facet.filterLowerBound;
+                var upperDate = facet.filterUpperBound;
+                lowerDate.setHours(0, 0, 0, 0);
+                upperDate.setHours(24, 0, 0, 0);
+                lowerValue = lowerDate.getTime();
+                upperValue = upperDate.getTime();
                 lowerLabel = React.createElement("span", null,
                     " ",
-                    facet.filterLowerBound.toISOString(),
-                    " ",
-                    React.createElement("br", null),
+                    facet.filterLowerBound.toLocaleDateString("en-US"),
                     " ");
                 upperLabel = React.createElement("span", null,
                     " ",
-                    React.createElement("br", null),
-                    " ",
-                    facet.filterUpperBound.toISOString(),
+                    facet.filterUpperBound.toLocaleDateString("en-US"),
                     " ");
                 minValue = facet.min.getTime();
                 maxValue = facet.max.getTime();
@@ -86,7 +86,7 @@ var RangeFacet = /** @class */ (function (_super) {
                             "  ",
                             React.createElement("b", null,
                                 " ",
-                                "< " + Numeral(facet.middleBucketCount).format("0,0") + " <",
+                                " < (" + Numeral(facet.middleBucketCount).format("0,0") + ") < ",
                                 " "),
                             " "),
                         React.createElement("span", { className: css.searchFacets__facetControlRangeLabelMax },
