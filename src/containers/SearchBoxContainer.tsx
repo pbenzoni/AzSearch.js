@@ -1,7 +1,7 @@
 import { Template } from "hogan.js";
 import { connect } from "react-redux";
 import * as React from "react";
-import { Store, inputActions, suggestionsActions, asyncActions, facetsActions, searchParameterActions } from "azsearchstore";
+import { Store, inputActions, suggestionsActions, asyncActions, facetsActions, searchParameters, searchParameterActions } from "azsearchstore";
 import * as redux from "redux";
 import SearchBox from "../components/SearchBox";
 
@@ -28,6 +28,11 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
         },
         clearFacetsAndSearch: () => {
             dispatch(searchParameterActions.setPage(1));
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set("searchParams", searchParameters);
+            console.log("Searching");
+            window.location.search = urlParams.toString();
+
             dispatch(facetsActions.clearFacetsSelections());
             dispatch(asyncActions.fetchSearchResults);
         }
