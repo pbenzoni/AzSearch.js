@@ -28,16 +28,21 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
             case "number":
                 lowerValue = facet.filterLowerBound as number;
                 upperValue = facet.filterUpperBound as number;
-                lowerLabel = Numeral(facet.filterLowerBound).format("0.0a");
-                upperLabel = Numeral(facet.filterUpperBound).format("0.0a");
+                lowerLabel = Numeral(facet.filterLowerBound).format("0a");
+                upperLabel = Numeral(facet.filterUpperBound).format("0a");
                 minValue = facet.min as number;
                 maxValue = facet.max as number;
                 break;
             case "date":
-                lowerValue = (facet.filterLowerBound as Date).getTime();
-                upperValue = (facet.filterUpperBound as Date).getTime();
-                lowerLabel = <span> {(facet.filterLowerBound as Date).toISOString()} <br /> </span>;
-                upperLabel = <span> <br /> {(facet.filterUpperBound as Date).toISOString()} </span>;
+                let lowerDate = facet.filterLowerBound as Date;
+                let upperDate = facet.filterUpperBound as Date;
+
+                lowerDate.setHours(0, 0, 0, 0);
+                upperDate.setHours(24, 0, 0, 0);
+                lowerValue = lowerDate.getTime();
+                upperValue = upperDate.getTime();
+                lowerLabel = <span> {(facet.filterLowerBound as Date).toLocaleDateString("en-US")} </span>;
+                upperLabel = <span> {(facet.filterUpperBound as Date).toLocaleDateString("en-US")} </span>;
                 minValue = (facet.min as Date).getTime();
                 maxValue = (facet.max as Date).getTime();
                 break;
@@ -77,7 +82,7 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                             <span className={css.searchFacets__facetControlRangeLabelMin}>
                                 {lowerLabel}
                             </span>
-                            <span className={css.searchFacets__facetControlRangeLabelRange}>  <b> {"< " + Numeral(facet.middleBucketCount).format("0,0") + " <"} </b> </span>
+                            <span className={css.searchFacets__facetControlRangeLabelRange}>  <b> {" < (" + Numeral(facet.middleBucketCount).format("0,0") + ") < "} </b> </span>
                             <span className={css.searchFacets__facetControlRangeLabelMax}>
                                 {upperLabel} {upperBoundLabel}
                             </span>
