@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import * as React from "react";
 export interface OwnProps {
     filterKey: string;
@@ -22,4 +21,4 @@ export declare const dispatchProps: {
     onFilterChange: (filter: string) => void;
 };
 export declare type PropsType = typeof stateProps & typeof dispatchProps & OwnProps;
-export declare const StaticFilterContainer: React.ComponentClass<OwnProps>;
+export declare const StaticFilterContainer: React.ComponentClass<OwnProps, any>;

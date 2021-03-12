@@ -13,7 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var objAssign = require("object-assign");
 var css_1 = require("../utils/css");
-var SortBy = (function (_super) {
+var SortBy = /** @class */ (function (_super) {
     __extends(SortBy, _super);
     function SortBy() {
         return _super !== null && _super.apply(this, arguments) || this;

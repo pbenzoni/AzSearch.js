@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import * as React from "react";
 import { Store } from "azsearchstore";
 export interface OwnProps {
@@ -14,4 +13,4 @@ export declare const dispatchProps: {
     toggleFacet: (value: string) => void;
 };
 export declare type PropsType = typeof stateProps & typeof dispatchProps & OwnProps;
-export declare const CheckboxFacetContainer: React.ComponentClass<OwnProps>;
+export declare const CheckboxFacetContainer: React.ComponentClass<OwnProps, any>;

@@ -27,6 +27,7 @@
   "author": "Evan Boyle (https://github.com/EvanBoyle)",
   "license": "MIT",
   "dependencies": {
+    "@types/react-date-range": "^1.1.4",
     "azsearchstore": "^0.0.27",
     "hogan.js": "3.0.2",
     "numeral": "^2.0.6",
@@ -34,6 +35,7 @@
     "rc-slider": "6.1.2",
     "react-addons-test-utils": "^15.5.1",
     "react-autosuggest": "9.0.0",
+    "react-date-range": "^1.1.3",
     "react-redux": "^5.0.3",
     "react-spinkit": "^2.1.2"
   },

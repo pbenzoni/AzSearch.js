@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import * as React from "react";
 export interface OwnProps {
     css: {
@@ -20,4 +19,4 @@ export declare const dispatchProps: {
     loadPage: (page: number) => void;
 };
 export declare type PropsType = typeof stateProps & typeof dispatchProps & OwnProps;
-export declare const PagerContainer: React.ComponentClass<OwnProps>;
+export declare const PagerContainer: React.ComponentClass<OwnProps, any>;

@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import * as React from "react";
 export interface OwnProps {
     css: {
@@ -16,4 +15,4 @@ export declare const dispatchProps: {
     onClear: () => void;
 };
 export declare type PropsType = typeof stateProps & typeof dispatchProps & OwnProps;
-export declare const ClearFiltersButtonContainer: React.ComponentClass<OwnProps>;
+export declare const ClearFiltersButtonContainer: React.ComponentClass<OwnProps, any>;

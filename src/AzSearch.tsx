@@ -99,11 +99,11 @@ class Automagic {
         );
     }
 
-    public addSortBy(htmlId: string, fields: { fieldName: string, displayName?: string, latitude?: number, longitude?: number }[], defaultSortFieldName?: string, cssClasses?: { [key: string]: string; }) {
+    // todo add asc sort
+    public addSortBy(htmlId: string, fields: { fieldName: string, displayName?: string, order?: string, latitude?: number, longitude?: number }[], defaultSortFieldName?: string, cssClasses?: { [key: string]: string; }) {
         let updatedSortClause = "";
-        const order = "desc";
         let formattedFields = fields.map((field) => {
-            let orderbyClause = createOrderByClause(field, order);
+            let orderbyClause = createOrderByClause(field, field.order ? field.order : "desc");
             updatedSortClause = field.fieldName === defaultSortFieldName ? orderbyClause : updatedSortClause;
             return {
                 displayName: field.displayName ? field.displayName : field.fieldName,

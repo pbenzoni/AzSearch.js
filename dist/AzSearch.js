@@ -28,7 +28,7 @@ var Components = { SearchBox: SearchBox_1.default, CheckboxFacet: CheckboxFacet_
 exports.Components = Components;
 var Containers = { CheckboxFacetContainer: CheckboxFacetContainer_1.CheckboxFacetContainer, ResultsContainer: ResultsContainer_1.ResultsContainer, SearchBoxContainer: SearchBoxContainer_1.SearchBoxContainer, ClearFiltersButtonContainer: ClearFiltersButtonContainer_1.ClearFiltersButtonContainer, SortByContainer: SortByContainer_1.SortByContainer, StaticFilterContainer: StaticFilterContainer_1.StaticFilterContainer, LoadingIndicatorContainer: LoadingIndicatorContainer_1.LoadingIndicatorContainer };
 exports.Containers = Containers;
-var Automagic = (function () {
+var Automagic = /** @class */ (function () {
     function Automagic(config) {
         this.store = new azsearchstore_1.AzSearchStore();
         this.store.setConfig(config);
@@ -63,11 +63,11 @@ var Automagic = (function () {
         react_dom_1.render(React.createElement(react_redux_1.Provider, { store: this.store.store },
             React.createElement(ClearFiltersButtonContainer_1.ClearFiltersButtonContainer, { css: cssClasses })), document.getElementById(htmlId));
     };
+    // todo add asc sort
     Automagic.prototype.addSortBy = function (htmlId, fields, defaultSortFieldName, cssClasses) {
         var updatedSortClause = "";
-        var order = "desc";
         var formattedFields = fields.map(function (field) {
-            var orderbyClause = utils_1.createOrderByClause(field, order);
+            var orderbyClause = utils_1.createOrderByClause(field, field.order ? field.order : "desc");
             updatedSortClause = field.fieldName === defaultSortFieldName ? orderbyClause : updatedSortClause;
             return {
                 displayName: field.displayName ? field.displayName : field.fieldName,

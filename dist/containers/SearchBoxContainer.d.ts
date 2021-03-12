@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { Template } from "hogan.js";
 import * as React from "react";
 export interface OwnProps {
@@ -27,4 +26,4 @@ export declare const dispatchProps: {
     clearFacetsAndSearch: () => void;
 };
 export declare type PropsType = typeof stateProps & typeof dispatchProps;
-export declare const SearchBoxContainer: React.ComponentClass<OwnProps>;
+export declare const SearchBoxContainer: React.ComponentClass<OwnProps, any>;

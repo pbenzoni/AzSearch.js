@@ -14,7 +14,7 @@ var React = require("react");
 var objAssign = require("object-assign");
 var css_1 = require("../utils/css");
 var Numeral = require("numeral");
-var CheckboxFacet = (function (_super) {
+var CheckboxFacet = /** @class */ (function (_super) {
     __extends(CheckboxFacet, _super);
     function CheckboxFacet() {
         return _super !== null && _super.apply(this, arguments) || this;

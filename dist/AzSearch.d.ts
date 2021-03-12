@@ -1,5 +1,4 @@
 /// <reference path="hogan.js.d.ts" />
-/// <reference types="react" />
 import { Store, AzSearchStore } from "azsearchstore";
 import * as React from "react";
 import { OwnProps as BoxOwnProps } from "./containers/SearchBoxContainer";
@@ -27,13 +26,13 @@ declare let Components: {
     LoadingIndicator: typeof LoadingIndicator;
 };
 declare let Containers: {
-    CheckboxFacetContainer: React.ComponentClass<CheckboxOwnProps>;
-    ResultsContainer: React.ComponentClass<ResultsOwnProps>;
-    SearchBoxContainer: React.ComponentClass<BoxOwnProps>;
-    ClearFiltersButtonContainer: React.ComponentClass<FilterBarOwnProps>;
-    SortByContainer: React.ComponentClass<SortByOwnProps>;
-    StaticFilterContainer: React.ComponentClass<StaticFilterOwnProps>;
-    LoadingIndicatorContainer: React.ComponentClass<LoadingIndicatorOwnProps>;
+    CheckboxFacetContainer: React.ComponentClass<CheckboxOwnProps, any>;
+    ResultsContainer: React.ComponentClass<ResultsOwnProps, any>;
+    SearchBoxContainer: React.ComponentClass<BoxOwnProps, any>;
+    ClearFiltersButtonContainer: React.ComponentClass<FilterBarOwnProps, any>;
+    SortByContainer: React.ComponentClass<SortByOwnProps, any>;
+    StaticFilterContainer: React.ComponentClass<StaticFilterOwnProps, any>;
+    LoadingIndicatorContainer: React.ComponentClass<LoadingIndicatorOwnProps, any>;
 };
 declare class Automagic {
     store: AzSearchStore;
@@ -59,6 +58,7 @@ declare class Automagic {
     addSortBy(htmlId: string, fields: {
         fieldName: string;
         displayName?: string;
+        order?: string;
         latitude?: number;
         longitude?: number;
     }[], defaultSortFieldName?: string, cssClasses?: {

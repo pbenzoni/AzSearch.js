@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import * as React from "react";
 import { PropsType } from "../containers/SearchBoxContainer";
 export declare type State = {};

@@ -15,7 +15,7 @@ var objAssign = require("object-assign");
 var css_1 = require("../utils/css");
 var rc_slider_1 = require("rc-slider");
 var Numeral = require("numeral");
-var RangeFacet = (function (_super) {
+var RangeFacet = /** @class */ (function (_super) {
     __extends(RangeFacet, _super);
     function RangeFacet() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -67,7 +67,6 @@ var RangeFacet = (function (_super) {
             var upper = isDate ? new Date(value[1]) : value[1];
             onRangeChange(lower, upper);
         };
-        // todo add [ ] to [ ] date ranges
         return (React.createElement("div", { className: css.searchFacets__rangeFacet },
             React.createElement("div", { className: css.searchFacets__facetHeaderContainer },
                 React.createElement("h4", { className: css.searchFacets__facetHeader },

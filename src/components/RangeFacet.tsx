@@ -53,7 +53,6 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
             let upper = isDate ? new Date(value[1]) : value[1];
             onRangeChange(lower, upper);
         };
-        // todo add [ ] to [ ] date ranges
         return (
             <div className={css.searchFacets__rangeFacet}>
                 <div className={css.searchFacets__facetHeaderContainer}>
