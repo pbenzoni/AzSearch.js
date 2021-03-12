@@ -1,0 +1,75 @@
+/// <reference path="hogan.js.d.ts" />
+/// <reference types="react" />
+import { Store, AzSearchStore } from "azsearchstore";
+import * as React from "react";
+import { OwnProps as BoxOwnProps } from "./containers/SearchBoxContainer";
+import { OwnProps as ResultsOwnProps } from "./containers/ResultsContainer";
+import { OwnProps as CheckboxOwnProps } from "./containers/CheckboxFacetContainer";
+import { OwnProps as SortByOwnProps } from "./containers/SortByContainer";
+import { OwnProps as StaticFilterOwnProps } from "./containers/StaticFilterContainer";
+import { OwnProps as FilterBarOwnProps } from "./containers/ClearFiltersButtonContainer";
+import { OwnProps as LoadingIndicatorOwnProps } from "./containers/LoadingIndicatorContainer";
+import SearchBox from "./components/SearchBox";
+import CheckboxFacet from "./components/CheckboxFacet";
+import ClearFiltersButton from "./components/ClearFiltersButton";
+import Results from "./components/Results";
+import SortBy from "./components/SortBy";
+import StaticFilter from "./components/StaticFilter";
+import LoadingIndicator from "./components/LoadingIndicator";
+import "rc-slider/assets/index.css";
+declare let Components: {
+    SearchBox: typeof SearchBox;
+    CheckboxFacet: typeof CheckboxFacet;
+    Results: typeof Results;
+    ClearFiltersButton: typeof ClearFiltersButton;
+    SortBy: typeof SortBy;
+    StaticFilter: typeof StaticFilter;
+    LoadingIndicator: typeof LoadingIndicator;
+};
+declare let Containers: {
+    CheckboxFacetContainer: React.ComponentClass<CheckboxOwnProps>;
+    ResultsContainer: React.ComponentClass<ResultsOwnProps>;
+    SearchBoxContainer: React.ComponentClass<BoxOwnProps>;
+    ClearFiltersButtonContainer: React.ComponentClass<FilterBarOwnProps>;
+    SortByContainer: React.ComponentClass<SortByOwnProps>;
+    StaticFilterContainer: React.ComponentClass<StaticFilterOwnProps>;
+    LoadingIndicatorContainer: React.ComponentClass<LoadingIndicatorOwnProps>;
+};
+declare class Automagic {
+    store: AzSearchStore;
+    constructor(config: Store.Config);
+    addSearchBox(htmlId: string, parameters?: Store.SuggestionsParametersUpdate, suggestionValueKey?: string, mustacheTemplate?: string, cssClasses?: {
+        [key: string]: string;
+    }): void;
+    addCheckboxFacet(htmlId: string, fieldName: string, dataType: Store.CheckboxDataType, cssClasses?: {
+        [key: string]: string;
+    }): void;
+    addRangeFacet(htmlId: string, fieldName: string, dataType: Store.RangeDataType, min: number | Date, max: number | Date, cssClasses?: {
+        [key: string]: string;
+    }): void;
+    addResults(htmlId: string, parameters?: Store.SearchParametersUpdate, mustacheTemplate?: string, cssClasses?: {
+        [key: string]: string;
+    }): void;
+    addPager(htmlId: string, cssClasses?: {
+        [key: string]: string;
+    }): void;
+    addClearFiltersButton(htmlId: string, cssClasses?: {
+        [key: string]: string;
+    }): void;
+    addSortBy(htmlId: string, fields: {
+        fieldName: string;
+        displayName?: string;
+        latitude?: number;
+        longitude?: number;
+    }[], defaultSortFieldName?: string, cssClasses?: {
+        [key: string]: string;
+    }): void;
+    addStaticFilter(htmlId: string, filterKey: string, filters: {
+        filter: string;
+        displayName: string;
+    }[], defaultFilter: string, title: string, cssClasses?: {
+        [key: string]: string;
+    }): void;
+    addLoadingIndicator(htmlId: string): void;
+}
+export { Components, Containers, Automagic };
