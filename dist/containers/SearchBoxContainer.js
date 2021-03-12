@@ -19,16 +19,15 @@ var mapDispatchToProps = function (dispatch) {
         },
         clearFacetsAndSearch: function () {
             dispatch(azsearchstore_1.searchParameterActions.setPage(1));
-            var urlParams = new URLSearchParams(window.location.search);
-            urlParams.set("searchParams", azsearchstore_1.searchParameters);
-            console.log("Searching");
-            window.location.search = urlParams.toString();
             dispatch(azsearchstore_1.facetsActions.clearFacetsSelections());
             dispatch(azsearchstore_1.asyncActions.fetchSearchResults);
         }
     };
 };
 function mapStateToProps(state, ownProps) {
+    var urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("q", state.parameters.input);
+    window.location.search = urlParams.toString();
     return {
         input: state.parameters.input,
         preTag: state.parameters.suggestionsParameters.highlightPreTag,
