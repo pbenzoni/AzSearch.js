@@ -46,7 +46,7 @@ var RangeFacet = /** @class */ (function (_super) {
                 var lowerDate = facet.filterLowerBound;
                 var upperDate = facet.filterUpperBound;
                 lowerDate.setHours(0, 0, 0, 0);
-                upperDate.setHours(24, 0, 0, 0);
+                upperDate.setHours(23, 59, 0, 0);
                 lowerValue = lowerDate.getTime();
                 upperValue = upperDate.getTime();
                 lowerLabel = React.createElement("span", null,

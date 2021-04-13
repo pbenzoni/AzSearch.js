@@ -38,7 +38,7 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                 let upperDate = facet.filterUpperBound as Date;
 
                 lowerDate.setHours(0, 0, 0, 0);
-                upperDate.setHours(24, 0, 0, 0);
+                upperDate.setHours(23, 59, 0, 0);
                 lowerValue = lowerDate.getTime();
                 upperValue = upperDate.getTime();
                 lowerLabel = <span> {(facet.filterLowerBound as Date).toLocaleDateString("en-US")} </span>;
