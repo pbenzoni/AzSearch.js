@@ -35,9 +35,6 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
 };
 
 function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
-    const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set("q", state.parameters.input       );
-    window.location.search = urlParams.toString();
 
     return {
         input: state.parameters.input,

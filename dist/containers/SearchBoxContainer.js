@@ -25,9 +25,6 @@ var mapDispatchToProps = function (dispatch) {
     };
 };
 function mapStateToProps(state, ownProps) {
-    var urlParams = new URLSearchParams(window.location.search);
-    urlParams.set("q", state.parameters.input);
-    window.location.search = urlParams.toString();
     return {
         input: state.parameters.input,
         preTag: state.parameters.suggestionsParameters.highlightPreTag,
