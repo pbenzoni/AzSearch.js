@@ -13,8 +13,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var objAssign = require("object-assign");
 var css_1 = require("../utils/css");
-var RangeCalendar_1 = require("rc-calendar/lib/RangeCalendar");
-var en_US_1 = require("rc-calendar/lib/locale/en_US");
+var rc_calendar_1 = require("rc-calendar");
+var rc_calendar_2 = require("rc-calendar");
 var Numeral = require("numeral");
 var RangeFacet = /** @class */ (function (_super) {
     __extends(RangeFacet, _super);
@@ -78,7 +78,7 @@ var RangeFacet = /** @class */ (function (_super) {
             React.createElement("div", { className: css.searchFacets__facetControlContainer },
                 React.createElement("ul", { className: css.searchFacets__facetControlList },
                     React.createElement("li", { className: css.searchFacets__facetControl },
-                        React.createElement(RangeCalendar_1.default, { showToday: false, showWeekNumber: true, dateInputPlaceholder: ["Start", "End"], locale: en_US_1.default, showOk: false, showClear: true, format: "MM-DD-YYYY", onChange: onChange, onSelect: onChange, renderFooter: function () { return React.createElement("span", null, "extra footer"); } })),
+                        React.createElement(rc_calendar_1.default, { showToday: false, showWeekNumber: true, locale: rc_calendar_2.default, showOk: false, format: "MM-DD-YYYY", renderFooter: function () { return React.createElement("span", null, "extra footer"); } })),
                     React.createElement("li", { className: css.searchFacets__facetControlRangeLabel },
                         React.createElement("span", { className: css.searchFacets__facetControlRangeLabelMin }, lowerLabel),
                         React.createElement("span", { className: css.searchFacets__facetControlRangeLabelMax }, upperLabel))))));

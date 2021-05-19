@@ -4,8 +4,8 @@ import * as objAssign from "object-assign";
 import { Store } from "azsearchstore";
 import { defaultCss } from "../utils/css";
 import { Range } from "rc-slider";
-import RangeCalendar from "rc-calendar/lib/RangeCalendar";
-import enUS from "rc-calendar/lib/locale/en_US";
+import RangeCalendar from "rc-calendar";
+import enUS from "rc-calendar";
 import * as Numeral from "numeral";
 
 export type State = {};
@@ -70,13 +70,9 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                         <RangeCalendar
                             showToday={false}
                             showWeekNumber
-                            dateInputPlaceholder={["Start", "End"]}
                             locale={enUS}
                             showOk={false}
-                            showClear
                             format={"MM-DD-YYYY"}
-                            onChange={onChange}
-                            onSelect={onChange}
                             renderFooter={() => <span>extra footer</span>}
                         />
                         </li>
