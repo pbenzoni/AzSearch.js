@@ -13,7 +13,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var objAssign = require("object-assign");
 var css_1 = require("../utils/css");
-var rc_slider_1 = require("rc-slider");
+var RangeCalendar_1 = require("rc-calendar/lib/RangeCalendar");
+var en_US_1 = require("rc-calendar/lib/locale/en_US");
 var Numeral = require("numeral");
 var RangeFacet = /** @class */ (function (_super) {
     __extends(RangeFacet, _super);
@@ -77,17 +78,9 @@ var RangeFacet = /** @class */ (function (_super) {
             React.createElement("div", { className: css.searchFacets__facetControlContainer },
                 React.createElement("ul", { className: css.searchFacets__facetControlList },
                     React.createElement("li", { className: css.searchFacets__facetControl },
-                        React.createElement(rc_slider_1.Range, { value: [lowerValue,
-                                upperValue], min: minValue, max: maxValue, onChange: onChange, onAfterChange: afterRangeChange, step: 1, pushable: true, className: css.searchFacets__sliderContainer })),
+                        React.createElement(RangeCalendar_1.default, { showToday: false, showWeekNumber: true, dateInputPlaceholder: ["Start", "End"], locale: en_US_1.default, showOk: false, showClear: true, format: "MM-DD-YYYY", onChange: onChange, onSelect: onChange, renderFooter: function () { return React.createElement("span", null, "extra footer"); } })),
                     React.createElement("li", { className: css.searchFacets__facetControlRangeLabel },
                         React.createElement("span", { className: css.searchFacets__facetControlRangeLabelMin }, lowerLabel),
-                        React.createElement("span", { className: css.searchFacets__facetControlRangeLabelRange },
-                            "  ",
-                            React.createElement("b", null,
-                                " ",
-                                " < (" + Numeral(facet.middleBucketCount).format("0,0") + ") < ",
-                                " "),
-                            " "),
                         React.createElement("span", { className: css.searchFacets__facetControlRangeLabelMax }, upperLabel))))));
     };
     return RangeFacet;
