@@ -5,6 +5,8 @@ import { Store } from "azsearchstore";
 import { defaultCss } from "../utils/css";
 import { Range } from "rc-slider";
 import RangeCalendar from "rc-calendar";
+import Picker from "rc-calendar";
+import "rc-calendar/assets/index.css";
 import enUS from "rc-calendar";
 import * as Numeral from "numeral";
 
