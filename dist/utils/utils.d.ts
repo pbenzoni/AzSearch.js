@@ -3,4 +3,4 @@ export declare const createOrderByClause: (field: {
     displayName?: string;
     latitude?: number;
     longitude?: number;
-}, order: string) => string;
+}, order: string) => any;

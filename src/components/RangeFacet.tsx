@@ -4,11 +4,11 @@ import * as objAssign from "object-assign";
 import { Store } from "azsearchstore";
 import { defaultCss } from "../utils/css";
 import { Range } from "rc-slider";
-import RangeCalendar from "rc-calendar";
-import Picker from "rc-calendar";
-import "rc-calendar/assets/index.css";
-import enUS from "rc-calendar";
 import * as Numeral from "numeral";
+
+import 'react-dates/initialize';
+import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import 'react-dates/lib/css/_datepicker.css';
 
 export type State = {};
 
@@ -69,19 +69,23 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                 <div className={css.searchFacets__facetControlContainer}>
                     <ul className={css.searchFacets__facetControlList}>
                         <li className={css.searchFacets__facetControl}>
-                        <RangeCalendar
-                            showToday={false}
-                            showWeekNumber
-                            locale={enUS}
-                            showOk={false}
-                            format={"MM-DD-YYYY"}
-                            renderFooter={() => <span>extra footer</span>}
-                        />
+
+                        <DateRangePicker
+                            startDate={minValue} // momentPropTypes.momentObj or null,
+                            startDateId="start_date_id" // PropTypes.string.isRequired,
+                            endDate={maxValue} // momentPropTypes.momentObj or null,
+                            endDateId="end_date_id" // PropTypes.string.isRequired,
+                            onDatesChange={({ lowerValue, upperValue }) => this.setState({lowerValue, upperValue  })} // PropTypes.func.isRequired,
+                            focusedInput={null} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                            onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                            />
+                          
                         </li>
                         <li className={css.searchFacets__facetControlRangeLabel}>
                             <span className={css.searchFacets__facetControlRangeLabelMin}>
                                 {lowerLabel}
                             </span>
+                            <span className={css.searchFacets__facetControlRangeLabelRange}>  <b> {" < (" + Numeral(facet.middleBucketCount).format("0,0") + ") < "} </b> </span>
                             <span className={css.searchFacets__facetControlRangeLabelMax}>
                                 {upperLabel} 
                             </span>
