@@ -46,10 +46,10 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             // console.log(facetToSave)
             dispatch(searchParameterActions.setPage(1));
             dispatch(facetsActions.clearFacetsSelections());
-            //
-            dispatch(facetsActions.setFacetRange('tweetDate',min,max));
 
-            dispatch(asyncActions.fetchSearchResultsFromFacet);
+            dispatch(asyncActions.fetchSearchResults);
+                        //
+            dispatch(facetsActions.setFacetRange('tweetDate',min,max));
         }
     };
 };
