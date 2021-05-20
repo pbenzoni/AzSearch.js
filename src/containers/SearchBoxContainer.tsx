@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             console.log(savedRange)
             dispatch(searchParameterActions.setPage(1));
             dispatch(facetsActions.clearFacetsSelections());
-            dispatch(facetsActions.updateFacetsValues(savedRange));
+            dispatch(facetsActions.updateFacetsValues(savedRange.facets));
 
             dispatch(asyncActions.fetchSearchResultsFromFacet);
         }
