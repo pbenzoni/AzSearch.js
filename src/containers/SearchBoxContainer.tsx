@@ -29,23 +29,25 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             dispatch(suggestionsActions.clearSuggestions());
         },
         clearFacetsAndSearch: () => {
-            // var facetToSave   = {};
-            //  Object.keys(savedRange.facets).map(key => {
-            //     if("tweetDate" === key){
-            //         savedRange.facets[key].min  = savedRange.facets[key].filterLowerBound;
-            //         savedRange.facets[key].max  = savedRange.facets[key].filterUpperBound;
+            var facetToSave   = {};
+            var min  = savedRange.facets["tweetDate" ].filterLowerBound;
+            var max  = savedRange.facets["tweetDate" ].filterUpperBound;
 
-            //         facetToSave= savedRange.facets[key]
-            //     }
-            // });
-            // savedRange.facets = {}
-            // savedRange.facets["tweetDate"] = facetToSave
+             Object.keys(savedRange.facets).map(key => {
+                if("tweetDate" === key){
+                    savedRange.facets[key].min  = savedRange.facets[key].filterLowerBound;
+                    savedRange.facets[key].max  = savedRange.facets[key].filterUpperBound;
+
+                    facetToSave= savedRange.facets[key]
+                }
+            });
+
             
             // console.log(facetToSave)
             dispatch(searchParameterActions.setPage(1));
             dispatch(facetsActions.clearFacetsSelections());
             //
-//            dispatch(facetsActions.setFacetsValues(savedRange.facets));
+            dispatch(facetsActions.setFacetRange('tweetDate',min,max));
 
             dispatch(asyncActions.fetchSearchResultsFromFacet);
         }
