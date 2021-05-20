@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
              Object.keys(savedRange.facets).map(key => {
                 if("tweetDate" === key){
                     savedRange.facets[key].min  = savedRange.facets[key].filterLowerBound;
-                    savedRange.facets[key].min  = savedRange.facets[key].filterUpperBound;
+                    savedRange.facets[key].max  = savedRange.facets[key].filterUpperBound;
 
                     facetToSave= savedRange.facets[key]
                 }
