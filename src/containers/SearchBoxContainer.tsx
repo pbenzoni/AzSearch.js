@@ -29,18 +29,19 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             dispatch(suggestionsActions.clearSuggestions());
         },
         clearFacetsAndSearch: () => {
-            var facetToSave = savedRange;
-            facetToSave.facets = {};
+            var facetToSave   = {};
              Object.keys(savedRange.facets).map(key => {
                 if("tweetDate" === key){
-                    facetToSave.facets[key] = savedRange.facets[key]
-
+                    facetToSave= savedRange.facets[key]
                 }
             });
+            savedRange.facets = {}
+            savedRange.facets["tweetDate"] = facetToSave
+            
             console.log(facetToSave)
             dispatch(searchParameterActions.setPage(1));
             dispatch(facetsActions.clearFacetsSelections());
-            dispatch(facetsActions.updateFacetsValues(facetToSave.facets));
+            dispatch(facetsActions.updateFacetsValues(savedRange.facets));
 
             dispatch(asyncActions.fetchSearchResultsFromFacet);
         }
