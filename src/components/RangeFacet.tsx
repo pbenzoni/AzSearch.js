@@ -78,6 +78,10 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                             onDatesChange={({ lowerValue, upperValue }) => this.setState({lowerValue, upperValue  })} // PropTypes.func.isRequired,
                             focusedInput={null} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                             onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                            displayFormat="MM-DD-YYYY"
+                            startDatePlaceholderText="Start Date"
+                            endDatePlaceholderText="End Date"
+
                             />
                           
                         </li>
