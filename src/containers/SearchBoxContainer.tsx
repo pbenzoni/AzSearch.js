@@ -28,7 +28,6 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
         },
         clearFacetsAndSearch: () => {
             dispatch(searchParameterActions.setPage(1));
-            dispatch(facetsActions.clearFacetsSelections());
             dispatch(asyncActions.fetchSearchResults);
         }
     };

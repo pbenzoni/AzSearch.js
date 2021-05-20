@@ -6,10 +6,6 @@ import { defaultCss } from "../utils/css";
 import { Range } from "rc-slider";
 import * as Numeral from "numeral";
 
-import 'react-dates/initialize';
-import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
-
 export type State = {};
 
 class RangeFacet extends React.PureComponent<PropsType, State> {
@@ -69,21 +65,16 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                 <div className={css.searchFacets__facetControlContainer}>
                     <ul className={css.searchFacets__facetControlList}>
                         <li className={css.searchFacets__facetControl}>
-
-                        <DateRangePicker
-                            startDate={minValue} // momentPropTypes.momentObj or null,
-                            startDateId="start_date_id" // PropTypes.string.isRequired,
-                            endDate={maxValue} // momentPropTypes.momentObj or null,
-                            endDateId="end_date_id" // PropTypes.string.isRequired,
-                            onDatesChange={({ lowerValue, upperValue }) => this.setState({lowerValue, upperValue  })} // PropTypes.func.isRequired,
-                            focusedInput={null} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                            onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                            displayFormat="MM-DD-YYYY"
-                            startDatePlaceholderText="Start Date"
-                            endDatePlaceholderText="End Date"
-
-                            />
-                          
+                            <Range
+                                value={[lowerValue,
+                                    upperValue]}
+                                min={minValue}
+                                max={maxValue}
+                                onChange={onChange}
+                                onAfterChange={afterRangeChange}
+                                step={1}
+                                pushable={true}
+                                className={css.searchFacets__sliderContainer} />
                         </li>
                         <li className={css.searchFacets__facetControlRangeLabel}>
                             <span className={css.searchFacets__facetControlRangeLabelMin}>
@@ -102,5 +93,3 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
 }
 
 export default RangeFacet;
-
-
