@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             console.log(savedRange)
             dispatch(searchParameterActions.setPage(1));
             dispatch(facetsActions.clearFacetsSelections());
-            dispatch(facetsActions.setFacetRange(savedRange.key,savedRange.filterLowerBound, savedRange.filterUpperBound));
+            dispatch(facetsActions.updateFacetsValues(savedRange));
 
             dispatch(asyncActions.fetchSearchResultsFromFacet);
         }
@@ -41,7 +41,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
 
 function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
 
-    savedRange = state.facets.facets.tweetDate || null;
+    savedRange = state.facets || null;
 
     return {
         input: state.parameters.input,
