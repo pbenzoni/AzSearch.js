@@ -33,7 +33,8 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             dispatch(searchParameterActions.setPage(1));
             dispatch(facetsActions.clearFacetsSelections());
             dispatch(facetsActions.setFacetRange(savedRange.key,savedRange.filterLowerBound, savedRange.filterUpperBound));
-            dispatch(asyncActions.fetchSearchResults);
+
+            dispatch(asyncActions.fetchSearchResultsFromFacet);
         }
     };
 };
