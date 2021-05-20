@@ -1,7 +1,7 @@
 import { Template } from "hogan.js";
 import { connect } from "react-redux";
 import * as React from "react";
-import { Store, inputActions, suggestionsActions, asyncActions, facetsActions, searchParameterActions } from "azsearchstore";
+import { Store, inputActions, suggestionsActions, asyncActions, facetsActions, searchParameterActions} from "azsearchstore";
 import * as redux from "redux";
 import SearchBox from "../components/SearchBox";
 
@@ -29,22 +29,23 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             dispatch(suggestionsActions.clearSuggestions());
         },
         clearFacetsAndSearch: () => {
-            var facetToSave   = {};
-             Object.keys(savedRange.facets).map(key => {
-                if("tweetDate" === key){
-                    savedRange.facets[key].min  = savedRange.facets[key].filterLowerBound;
-                    savedRange.facets[key].max  = savedRange.facets[key].filterUpperBound;
+            // var facetToSave   = {};
+            //  Object.keys(savedRange.facets).map(key => {
+            //     if("tweetDate" === key){
+            //         savedRange.facets[key].min  = savedRange.facets[key].filterLowerBound;
+            //         savedRange.facets[key].max  = savedRange.facets[key].filterUpperBound;
 
-                    facetToSave= savedRange.facets[key]
-                }
-            });
-            savedRange.facets = {}
-            savedRange.facets["tweetDate"] = facetToSave
+            //         facetToSave= savedRange.facets[key]
+            //     }
+            // });
+            // savedRange.facets = {}
+            // savedRange.facets["tweetDate"] = facetToSave
             
-            console.log(facetToSave)
+            // console.log(facetToSave)
             dispatch(searchParameterActions.setPage(1));
             dispatch(facetsActions.clearFacetsSelections());
-            dispatch(facetsActions.setFacetsValues(savedRange.facets));
+            //
+//            dispatch(facetsActions.setFacetsValues(savedRange.facets));
 
             dispatch(asyncActions.fetchSearchResultsFromFacet);
         }
