@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             dispatch(suggestionsActions.clearSuggestions());
         },
         clearFacetsAndSearch: () => {
-            savedRange.keys.filter(key => {
+            savedRange.facets = savedRange.facets.keys.filter(key => {
                 return key === "tweetDate"
             });
             console.log(savedRange)
