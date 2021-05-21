@@ -34,6 +34,8 @@ var mapDispatchToProps = function (dispatch) {
             dispatch(azsearchstore_1.facetsActions.clearFacetsSelections());
             dispatch(azsearchstore_1.asyncActions.fetchSearchResults);
             dispatch(azsearchstore_1.facetsActions.setFacetRange("tweetDate", filterLowerBound, filterUpperBound));
+            dispatch(azsearchstore_1.facetsActions.setFacetsValues(facetToSave));
+            dispatch(azsearchstore_1.asyncActions.fetchSearchResults);
         }
     };
 };

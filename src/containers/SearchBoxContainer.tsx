@@ -51,6 +51,9 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
 
             dispatch(asyncActions.fetchSearchResults);
             dispatch(facetsActions.setFacetRange("tweetDate", filterLowerBound, filterUpperBound ));
+            dispatch(facetsActions.setFacetsValues(facetToSave));
+            dispatch(asyncActions.fetchSearchResults);
+
         }
     };
 };
