@@ -29,7 +29,11 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             dispatch(suggestionsActions.clearSuggestions());
         },
         clearFacetsAndSearch: () => {
-            let facetToSave   = {};
+            let facetToSave = {};
+            let filterLowerBound = savedRange.facets["tweetDate"].filterLowerBound;
+            let filterUpperBound = savedRange.facets["tweetDate"].filterUpperBound;
+
+
 
              Object.keys(savedRange.facets).map(key => {
                 if ( "tweetDate" === key ) {
@@ -46,7 +50,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             dispatch(facetsActions.clearFacetsSelections());
 
             dispatch(asyncActions.fetchSearchResults);
-            dispatch(facetsActions.updateFacetsValues(facetToSave));
+            dispatch(facetsActions.setFacetRange("tweetDate", filterLowerBound, filterUpperBound ));
         }
     };
 };
