@@ -20,12 +20,12 @@ var mapDispatchToProps = function (dispatch) {
         },
         clearFacetsAndSearch: function () {
             var facetToSave = {};
-            var filterLowerBound = savedRange.facets["tweetDate"].filterLowerBound;
-            var filterUpperBound = savedRange.facets["tweetDate"].filterUpperBound;
+            var filterLowerBound = null;
+            var filterUpperBound = null;
             Object.keys(savedRange.facets).map(function (key) {
                 if ("tweetDate" === key) {
-                    savedRange.facets[key].filterLowerBound = savedRange.facets[key].filterLowerBound;
-                    savedRange.facets[key].filterUpperBound = savedRange.facets[key].filterUpperBound;
+                    filterLowerBound = savedRange.facets[key].filterLowerBound;
+                    filterUpperBound = savedRange.facets[key].filterUpperBound;
                     facetToSave = savedRange.facets[key];
                 }
             });
@@ -33,9 +33,11 @@ var mapDispatchToProps = function (dispatch) {
             dispatch(azsearchstore_1.searchParameterActions.setPage(1));
             dispatch(azsearchstore_1.facetsActions.clearFacetsSelections());
             dispatch(azsearchstore_1.asyncActions.fetchSearchResults);
-            dispatch(azsearchstore_1.facetsActions.setFacetRange("tweetDate", filterLowerBound, filterUpperBound));
-            dispatch(azsearchstore_1.facetsActions.setFacetsValues(facetToSave));
-            dispatch(azsearchstore_1.asyncActions.fetchSearchResults);
+            if (filterLowerBound != null) {
+                dispatch(azsearchstore_1.facetsActions.setFacetRange("tweetDate", filterLowerBound, filterUpperBound));
+                dispatch(azsearchstore_1.facetsActions.setFacetsValues(facetToSave));
+                dispatch(azsearchstore_1.asyncActions.fetchSearchResults);
+            }
         }
     };
 };
