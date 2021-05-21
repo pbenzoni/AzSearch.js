@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             dispatch(facetsActions.clearFacetsSelections());
 
             dispatch(asyncActions.fetchSearchResults);
-            dispatch(facetsActions.updateFacetsValues(facetToSave));
+           // dispatch(facetsActions.updateFacetsValues(facetToSave));
         }
     };
 };
