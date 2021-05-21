@@ -30,8 +30,6 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
         },
         clearFacetsAndSearch: () => {
             var facetToSave   = {};
-            var min  = savedRange.facets["tweetDate" ].filterLowerBound;
-            var max  = savedRange.facets["tweetDate" ].filterUpperBound;
 
              Object.keys(savedRange.facets).map(key => {
                 if("tweetDate" === key){
@@ -48,8 +46,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             dispatch(facetsActions.clearFacetsSelections());
 
             dispatch(asyncActions.fetchSearchResults);
-                        //
-            dispatch(facetsActions.setFacetRange('tweetDate',min,max));
+            dispatch(facetsActions.updateFacetsValues(facetToSave));
         }
     };
 };
