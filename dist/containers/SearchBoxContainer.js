@@ -25,6 +25,7 @@ var mapDispatchToProps = function (dispatch) {
     };
 };
 function mapStateToProps(state, ownProps) {
+    // savedRange = state.facets || null;
     return {
         input: state.parameters.input,
         preTag: state.parameters.suggestionsParameters.highlightPreTag,
