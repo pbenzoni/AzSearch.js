@@ -6,6 +6,7 @@ var SearchBox_1 = require("../components/SearchBox");
 function getReturnType(expression) {
     return {};
 }
+var savedRange = null;
 var mapDispatchToProps = function (dispatch) {
     return {
         onInputChange: function (input) {
@@ -18,14 +19,24 @@ var mapDispatchToProps = function (dispatch) {
             dispatch(azsearchstore_1.suggestionsActions.clearSuggestions());
         },
         clearFacetsAndSearch: function () {
+            var facetToSave = {};
+            Object.keys(savedRange.facets).map(function (key) {
+                if ("tweetDate" === key) {
+                    savedRange.facets[key].filterLowerBound = savedRange.facets[key].filterLowerBound;
+                    savedRange.facets[key].filterUpperBound = savedRange.facets[key].filterUpperBound;
+                    facetToSave = savedRange.facets[key];
+                }
+            });
+            // console.log(facetToSave)
             dispatch(azsearchstore_1.searchParameterActions.setPage(1));
             dispatch(azsearchstore_1.facetsActions.clearFacetsSelections());
             dispatch(azsearchstore_1.asyncActions.fetchSearchResults);
+            dispatch(azsearchstore_1.facetsActions.updateFacetsValues(facetToSave));
         }
     };
 };
 function mapStateToProps(state, ownProps) {
-    // savedRange = state.facets || null;
+    savedRange = state.facets || null;
     return {
         input: state.parameters.input,
         preTag: state.parameters.suggestionsParameters.highlightPreTag,

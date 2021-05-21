@@ -15,6 +15,7 @@ export interface OwnProps {
     css: { [key: string]: string; };
 }
 
+let savedRange = null;
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
     return {
@@ -28,16 +29,31 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             dispatch(suggestionsActions.clearSuggestions());
         },
         clearFacetsAndSearch: () => {
+            let facetToSave   = {};
+
+             Object.keys(savedRange.facets).map(key => {
+                if ( "tweetDate" === key ) {
+                    savedRange.facets[key].filterLowerBound = savedRange.facets[key].filterLowerBound;
+                    savedRange.facets[key].filterUpperBound = savedRange.facets[key].filterUpperBound;
+
+                    facetToSave = savedRange.facets[key];
+
+                }
+            });
+
+            // console.log(facetToSave)
             dispatch(searchParameterActions.setPage(1));
             dispatch(facetsActions.clearFacetsSelections());
+
             dispatch(asyncActions.fetchSearchResults);
+            dispatch(facetsActions.updateFacetsValues(facetToSave));
         }
     };
 };
 
 function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
 
-    // savedRange = state.facets || null;
+    savedRange = state.facets || null;
 
     return {
         input: state.parameters.input,
