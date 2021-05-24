@@ -55,6 +55,7 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
 
             lowerValue = e.target.value;
             onRangeChange(new Date(lower), new Date(upper));
+            afterRangeChange();
         };
         let onUpperChange = (e) => {
             let upper = Date.parse(e.target.value);
@@ -62,6 +63,7 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
 
             upperValue = e.target.value;
             onRangeChange(new Date(lower), new Date(upper));
+            afterRangeChange();
         };
         return (
             <div id="range-facet" className={css.searchFacets__rangeFacet}>
@@ -82,6 +84,7 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                             step={1}
                             value={lowerValue}
                             onChange={event => onLowerChange(event)}
+
                             />
                         </li>
                         <li className={css.searchFacets__facetControlRangeLabel}>
@@ -94,6 +97,7 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                             max={maxValue}
                             step={1}
                             onChange={event => onUpperChange(event)}
+
                             value={upperValue}/>
 
                         </li>
