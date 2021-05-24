@@ -60,10 +60,16 @@ var RangeFacet = /** @class */ (function (_super) {
                 maxValue = facet.max.toISOString().split("T")[0];
                 break;
         }
-        var onChange = function (value) {
-            var isDate = facet.dataType === "date";
-            var lower = isDate ? new Date(value[0]) : value[0];
-            var upper = isDate ? new Date(value[1]) : value[1];
+        var onLowerChange = function (e) {
+            var lower = Date.parse(e.target.value);
+            var upper = Date.parse(upperValue);
+            lowerValue = e.target.value;
+            onRangeChange(lower, upper);
+        };
+        var onUpperChange = function (e) {
+            var upper = Date.parse(e.target.value);
+            var lower = Date.parse(lowerValue);
+            upperValue = e.target.value;
             onRangeChange(lower, upper);
         };
         return (React.createElement("div", { id: "range-facet", className: css.searchFacets__rangeFacet },
@@ -76,20 +82,19 @@ var RangeFacet = /** @class */ (function (_super) {
             React.createElement("div", { className: css.searchFacets__facetControlContainer },
                 React.createElement("ul", { className: css.searchFacets__facetControlList },
                     React.createElement("li", { className: css.searchFacets__facetControl },
-                        React.createElement("label", { htmlFor: "start-date" }, "Start:"),
-                        React.createElement("input", { id: "start-date", type: "date", className: css.searchFacets__facetControlCheckbox, min: minValue, max: maxValue, step: 1, value: lowerValue }),
-                        React.createElement("label", { htmlFor: "end-date" }, "End:"),
-                        React.createElement("input", { id: "end-date", type: "date", className: css.searchFacets__facetControlCheckbox, min: minValue, max: maxValue, step: 1, value: upperValue })),
+                        React.createElement("label", { htmlFor: "start-date" }, "From - "),
+                        React.createElement("input", { id: "start-date", type: "date", className: css.searchFacets__facetControlCheckbox, min: minValue, max: maxValue, step: 1, value: lowerValue, onChange: function (event) { return onLowerChange(event); } })),
                     React.createElement("li", { className: css.searchFacets__facetControlRangeLabel },
-                        React.createElement("span", { className: css.searchFacets__facetControlRangeLabelMin }, lowerLabel),
                         React.createElement("span", { className: css.searchFacets__facetControlRangeLabelRange },
                             "  ",
                             React.createElement("b", null,
                                 " ",
-                                " < (" + Numeral(facet.middleBucketCount).format("0,0") + ") < ",
+                                " (" + Numeral(facet.middleBucketCount).format("0,0") + ") ",
                                 " "),
-                            " "),
-                        React.createElement("span", { className: css.searchFacets__facetControlRangeLabelMax }, upperLabel))))));
+                            " ")),
+                    React.createElement("li", { className: css.searchFacets__facetControl },
+                        React.createElement("label", { htmlFor: "end-date" }, "To - "),
+                        React.createElement("input", { id: "end-date", type: "date", className: css.searchFacets__facetControlCheckbox, min: minValue, max: maxValue, step: 1, onChange: function (event) { return onUpperChange(event); }, value: upperValue }))))));
     };
     return RangeFacet;
 }(React.PureComponent));

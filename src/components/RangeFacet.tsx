@@ -48,10 +48,19 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                 maxValue = (facet.max as Date).toISOString().split("T")[0];
                 break;
         }
-        let onChange = (value: number[]) => {
-            const isDate = facet.dataType === "date";
-            let lower = isDate ? new Date(value[0]) : value[0];
-            let upper = isDate ? new Date(value[1]) : value[1];
+
+        let onLowerChange = (e) => {
+            let lower = Date.parse(e.target.value);
+            let upper = Date.parse(upperValue);
+
+            lowerValue = e.target.value;
+            onRangeChange(lower, upper);
+        };
+        let onUpperChange = (e) => {
+            let upper = Date.parse(e.target.value);
+            let lower = Date.parse(lowerValue);
+
+            upperValue = e.target.value;
             onRangeChange(lower, upper);
         };
         return (
@@ -66,28 +75,27 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                 <div className={css.searchFacets__facetControlContainer}>
                     <ul className={css.searchFacets__facetControlList}>
                         <li className={css.searchFacets__facetControl}>
-                            <label htmlFor="start-date">Start:</label>
+                            <label htmlFor="start-date">From - </label>
                             <input id="start-date" type="date" className={css.searchFacets__facetControlCheckbox}
                             min={minValue}
                             max={maxValue}
                             step={1}
-                            value={lowerValue}/>
-                            <label htmlFor="end-date">End:</label>
+                            value={lowerValue}
+                            onChange={event => onLowerChange(event)}
+                            />
+                        </li>
+                        <li className={css.searchFacets__facetControlRangeLabel}>
+                            <span className={css.searchFacets__facetControlRangeLabelRange}>  <b> {" (" + Numeral(facet.middleBucketCount).format("0,0") + ") "} </b> </span>
+                        </li>
+                        <li className={css.searchFacets__facetControl}>
+                            <label htmlFor="end-date">To - </label>
                             <input id="end-date" type="date" className={css.searchFacets__facetControlCheckbox}
                             min={minValue}
                             max={maxValue}
                             step={1}
+                            onChange={event => onUpperChange(event)}
                             value={upperValue}/>
 
-                        </li>
-                        <li className={css.searchFacets__facetControlRangeLabel}>
-                            <span className={css.searchFacets__facetControlRangeLabelMin}>
-                                {lowerLabel}
-                            </span>
-                            <span className={css.searchFacets__facetControlRangeLabelRange}>  <b> {" < (" + Numeral(facet.middleBucketCount).format("0,0") + ") < "} </b> </span>
-                            <span className={css.searchFacets__facetControlRangeLabelMax}>
-                                {upperLabel} 
-                            </span>
                         </li>
                     </ul>
                 </div>
