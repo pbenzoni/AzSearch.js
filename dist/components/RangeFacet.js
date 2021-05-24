@@ -46,8 +46,8 @@ var RangeFacet = /** @class */ (function (_super) {
                 var upperDate = facet.filterUpperBound;
                 lowerDate.setHours(0, 0, 0, 0);
                 upperDate.setHours(23, 59, 0, 0);
-                lowerValue = lowerDate;
-                upperValue = upperDate;
+                lowerValue = lowerDate.toISOString().split("T")[0];
+                upperValue = upperDate.toISOString().split("T")[0];
                 lowerLabel = React.createElement("span", null,
                     " ",
                     facet.filterLowerBound.toLocaleDateString("en-US"),
@@ -56,8 +56,8 @@ var RangeFacet = /** @class */ (function (_super) {
                     " ",
                     facet.filterUpperBound.toLocaleDateString("en-US"),
                     " ");
-                minValue = facet.min;
-                maxValue = facet.max;
+                minValue = facet.min.toISOString().split("T")[0];
+                maxValue = facet.max.toISOString().split("T")[0];
                 break;
         }
         var onChange = function (value) {
