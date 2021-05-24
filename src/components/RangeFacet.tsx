@@ -40,12 +40,12 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
 
                 lowerDate.setHours(0, 0, 0, 0);
                 upperDate.setHours(23, 59, 0, 0);
-                lowerValue = lowerDate.getTime();
-                upperValue = upperDate.getTime();
+                lowerValue = lowerDate;
+                upperValue = upperDate;
                 lowerLabel = <span> {(facet.filterLowerBound as Date).toLocaleDateString("en-US")} </span>;
                 upperLabel = <span> {(facet.filterUpperBound as Date).toLocaleDateString("en-US")} </span>;
-                minValue = (facet.min as Date).getTime();
-                maxValue = (facet.max as Date).getTime();
+                minValue = facet.min as Date;
+                maxValue = facet.max as Date;
                 break;
         }
         let onChange = (value: number[]) => {
