@@ -54,14 +54,14 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
             let upper = Date.parse(upperValue);
 
             lowerValue = e.target.value;
-            onRangeChange(lower, upper);
+            onRangeChange(new Date(lower), new Date(upper));
         };
         let onUpperChange = (e) => {
             let upper = Date.parse(e.target.value);
             let lower = Date.parse(lowerValue);
 
             upperValue = e.target.value;
-            onRangeChange(lower, upper);
+            onRangeChange(new Date(lower), new Date(upper));
         };
         return (
             <div id="range-facet" className={css.searchFacets__rangeFacet}>

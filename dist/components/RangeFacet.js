@@ -64,13 +64,13 @@ var RangeFacet = /** @class */ (function (_super) {
             var lower = Date.parse(e.target.value);
             var upper = Date.parse(upperValue);
             lowerValue = e.target.value;
-            onRangeChange(lower, upper);
+            onRangeChange(new Date(lower), new Date(upper));
         };
         var onUpperChange = function (e) {
             var upper = Date.parse(e.target.value);
             var lower = Date.parse(lowerValue);
             upperValue = e.target.value;
-            onRangeChange(lower, upper);
+            onRangeChange(new Date(lower), new Date(upper));
         };
         return (React.createElement("div", { id: "range-facet", className: css.searchFacets__rangeFacet },
             React.createElement("div", { className: css.searchFacets__facetHeaderContainer },
