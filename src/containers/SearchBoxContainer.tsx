@@ -2,6 +2,7 @@ import { Template } from "hogan.js";
 import { connect } from "react-redux";
 import * as React from "react";
 import { Store, inputActions, suggestionsActions, asyncActions, facetsActions, searchParameterActions} from "azsearchstore";
+import  RangeFacet from "../components/RangeFacet";
 import * as redux from "redux";
 import SearchBox from "../components/SearchBox";
 
@@ -54,6 +55,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             dispatch(facetsActions.setFacetRange("tweetDate", filterLowerBound, filterUpperBound ));
             dispatch(searchParameterActions.setPage(1));
             dispatch(asyncActions.fetchSearchResultsFromFacet);
+
         }
     };
 };

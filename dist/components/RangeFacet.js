@@ -13,7 +13,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var objAssign = require("object-assign");
 var css_1 = require("../utils/css");
-var rc_slider_1 = require("rc-slider");
 var Numeral = require("numeral");
 var RangeFacet = /** @class */ (function (_super) {
     __extends(RangeFacet, _super);
@@ -67,7 +66,7 @@ var RangeFacet = /** @class */ (function (_super) {
             var upper = isDate ? new Date(value[1]) : value[1];
             onRangeChange(lower, upper);
         };
-        return (React.createElement("div", { className: css.searchFacets__rangeFacet },
+        return (React.createElement("div", { id: "range-facet", className: css.searchFacets__rangeFacet },
             React.createElement("div", { className: css.searchFacets__facetHeaderContainer },
                 React.createElement("h4", { className: css.searchFacets__facetHeader },
                     React.createElement("a", { "data-toggle": "collapse", className: css.searchFacets__facetHeaderLink },
@@ -77,8 +76,10 @@ var RangeFacet = /** @class */ (function (_super) {
             React.createElement("div", { className: css.searchFacets__facetControlContainer },
                 React.createElement("ul", { className: css.searchFacets__facetControlList },
                     React.createElement("li", { className: css.searchFacets__facetControl },
-                        React.createElement(rc_slider_1.Range, { value: [lowerValue,
-                                upperValue], min: minValue, max: maxValue, onChange: onChange, onAfterChange: afterRangeChange, step: 1, pushable: true, className: css.searchFacets__sliderContainer })),
+                        React.createElement("label", { htmlFor: "start-date" }, "Start:"),
+                        React.createElement("input", { id: "start-date", type: "date", className: css.searchFacets__facetControlCheckbox, min: minValue, max: maxValue, step: 1, value: lowerValue }),
+                        React.createElement("label", { htmlFor: "end-date" }, "End:"),
+                        React.createElement("input", { id: "end-date", type: "date", className: css.searchFacets__facetControlCheckbox, min: minValue, max: maxValue, step: 1, value: upperValue })),
                     React.createElement("li", { className: css.searchFacets__facetControlRangeLabel },
                         React.createElement("span", { className: css.searchFacets__facetControlRangeLabelMin }, lowerLabel),
                         React.createElement("span", { className: css.searchFacets__facetControlRangeLabelRange },

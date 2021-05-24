@@ -9,6 +9,7 @@ import * as Numeral from "numeral";
 export type State = {};
 
 class RangeFacet extends React.PureComponent<PropsType, State> {
+
     render() {
         const facet = this.props.facet as Store.RangeFacet;
         let css = objAssign({}, defaultCss, this.props.css);
@@ -54,7 +55,7 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
             onRangeChange(lower, upper);
         };
         return (
-            <div className={css.searchFacets__rangeFacet}>
+            <div id="range-facet" className={css.searchFacets__rangeFacet}>
                 <div className={css.searchFacets__facetHeaderContainer}>
                     <h4 className={css.searchFacets__facetHeader}>
                         <a data-toggle="collapse" className={css.searchFacets__facetHeaderLink}  >
@@ -65,16 +66,19 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                 <div className={css.searchFacets__facetControlContainer}>
                     <ul className={css.searchFacets__facetControlList}>
                         <li className={css.searchFacets__facetControl}>
-                            <Range
-                                value={[lowerValue,
-                                    upperValue]}
-                                min={minValue}
-                                max={maxValue}
-                                onChange={onChange}
-                                onAfterChange={afterRangeChange}
-                                step={1}
-                                pushable={true}
-                                className={css.searchFacets__sliderContainer} />
+                            <label htmlFor="start-date">Start:</label>
+                            <input id="start-date" type="date" className={css.searchFacets__facetControlCheckbox}
+                            min={minValue}
+                            max={maxValue}
+                            step={1}
+                            value={lowerValue}/>
+                            <label htmlFor="end-date">End:</label>
+                            <input id="end-date" type="date" className={css.searchFacets__facetControlCheckbox}
+                            min={minValue}
+                            max={maxValue}
+                            step={1}
+                            value={upperValue}/>
+
                         </li>
                         <li className={css.searchFacets__facetControlRangeLabel}>
                             <span className={css.searchFacets__facetControlRangeLabelMin}>
