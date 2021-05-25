@@ -19,22 +19,32 @@ var mapDispatchToProps = function (dispatch) {
             dispatch(azsearchstore_1.suggestionsActions.clearSuggestions());
         },
         clearFacetsAndSearch: function () {
+            // var facetToSave   = {};
+            //  Object.keys(savedRange.facets).map(key => {
+            //     if("tweetDate" === key){
+            //         savedRange.facets[key].min  = savedRange.facets[key].filterLowerBound;
+            //         savedRange.facets[key].max  = savedRange.facets[key].filterUpperBound;
             var facetToSave = {};
-            var filterLowerBound = savedRange.facets["tweetDate"].filterLowerBound;
-            var filterUpperBound = savedRange.facets["tweetDate"].filterUpperBound;
+            var min = savedRange.facets["tweetDate"].filterLowerBound;
+            var max = savedRange.facets["tweetDate"].filterUpperBound;
             Object.keys(savedRange.facets).map(function (key) {
                 if ("tweetDate" === key) {
-                    savedRange.facets[key].filterLowerBound = savedRange.facets[key].filterLowerBound;
-                    savedRange.facets[key].filterUpperBound = savedRange.facets[key].filterUpperBound;
+                    savedRange.facets[key].min = savedRange.facets[key].filterLowerBound;
+                    savedRange.facets[key].max = savedRange.facets[key].filterUpperBound;
                     facetToSave = savedRange.facets[key];
                 }
             });
+            //         facetToSave= savedRange.facets[key]
+            //     }
+            // });
+            // savedRange.facets = {}
+            // savedRange.facets["tweetDate"] = facetToSave
             // console.log(facetToSave)
             dispatch(azsearchstore_1.searchParameterActions.setPage(1));
             dispatch(azsearchstore_1.facetsActions.clearFacetsSelections());
-            dispatch(azsearchstore_1.asyncActions.fetchSearchResults);
-            dispatch(azsearchstore_1.facetsActions.setFacetRange("tweetDate", filterLowerBound, filterUpperBound));
-            dispatch(azsearchstore_1.searchParameterActions.setPage(1));
+            //
+            //            dispatch(facetsActions.setFacetsValues(savedRange.facets));
+            dispatch(azsearchstore_1.facetsActions.setFacetRange("tweetDate", min, max));
             dispatch(azsearchstore_1.asyncActions.fetchSearchResultsFromFacet);
         }
     };
