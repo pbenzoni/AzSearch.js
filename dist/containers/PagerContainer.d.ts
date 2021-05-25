@@ -5,9 +5,9 @@ export interface OwnProps {
     };
 }
 export declare const stateProps: {
-    top: number;
-    skip: number;
-    count: number;
+    top: any;
+    skip: any;
+    count: any;
     showPager: boolean;
     css: {
         [key: string]: string;

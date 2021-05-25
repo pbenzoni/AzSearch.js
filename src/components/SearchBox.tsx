@@ -85,7 +85,7 @@ class SearchBox extends React.PureComponent<PropsType, State> {
 
         // input props
         const inputProps = {
-            placeholder: "Search...",
+            placeholder: "Search Tweets",
             value: input,
             onChange: this.onInputChange.bind(this),
             type: "search",

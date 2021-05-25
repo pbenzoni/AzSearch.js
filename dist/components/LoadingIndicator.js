@@ -15,7 +15,7 @@ var Spinner = require("react-spinkit");
 var style = {
     "height": "0em"
 };
-var LoadingIndicator = /** @class */ (function (_super) {
+var LoadingIndicator = (function (_super) {
     __extends(LoadingIndicator, _super);
     function LoadingIndicator() {
         return _super !== null && _super.apply(this, arguments) || this;

@@ -14,7 +14,7 @@ var React = require("react");
 var objAssign = require("object-assign");
 var css_1 = require("../utils/css");
 var Numeral = require("numeral");
-var RangeFacet = /** @class */ (function (_super) {
+var RangeFacet = (function (_super) {
     __extends(RangeFacet, _super);
     function RangeFacet() {
         return _super !== null && _super.apply(this, arguments) || this;

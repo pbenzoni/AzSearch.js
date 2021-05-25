@@ -7,10 +7,10 @@ export interface OwnProps {
     };
 }
 export declare const stateProps: {
-    results: {}[];
-    count: number;
-    top: number;
-    skip: number;
+    results: any;
+    count: any;
+    top: any;
+    skip: any;
     template: Template;
     css: {
         [key: string]: string;

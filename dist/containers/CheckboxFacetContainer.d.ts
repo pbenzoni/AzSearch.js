@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Store } from "azsearchstore";
 export interface OwnProps {
     facet: string;
     css: {
@@ -7,7 +6,7 @@ export interface OwnProps {
     };
 }
 export declare const stateProps: {
-    facet: Store.Facet;
+    facet: any;
 };
 export declare const dispatchProps: {
     toggleFacet: (value: string) => void;

@@ -22,7 +22,7 @@ var AutoSuggest = require("react-autosuggest");
 var React = require("react");
 var objAssign = require("object-assign");
 var css_1 = require("../utils/css");
-var SearchBox = /** @class */ (function (_super) {
+var SearchBox = (function (_super) {
     __extends(SearchBox, _super);
     function SearchBox() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -90,7 +90,7 @@ var SearchBox = /** @class */ (function (_super) {
         };
         // input props
         var inputProps = {
-            placeholder: "Search...",
+            placeholder: "Search Tweets",
             value: input,
             onChange: this.onInputChange.bind(this),
             type: "search",

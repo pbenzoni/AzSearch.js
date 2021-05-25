@@ -15,7 +15,7 @@ export declare const stateProps: {
     css: {
         [key: string]: string;
     };
-    activeFilter: string;
+    activeFilter: any;
 };
 export declare const dispatchProps: {
     onFilterChange: (filter: string) => void;

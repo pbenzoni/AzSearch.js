@@ -28,7 +28,7 @@ var Components = { SearchBox: SearchBox_1.default, CheckboxFacet: CheckboxFacet_
 exports.Components = Components;
 var Containers = { CheckboxFacetContainer: CheckboxFacetContainer_1.CheckboxFacetContainer, ResultsContainer: ResultsContainer_1.ResultsContainer, SearchBoxContainer: SearchBoxContainer_1.SearchBoxContainer, ClearFiltersButtonContainer: ClearFiltersButtonContainer_1.ClearFiltersButtonContainer, SortByContainer: SortByContainer_1.SortByContainer, StaticFilterContainer: StaticFilterContainer_1.StaticFilterContainer, LoadingIndicatorContainer: LoadingIndicatorContainer_1.LoadingIndicatorContainer };
 exports.Containers = Containers;
-var Automagic = /** @class */ (function () {
+var Automagic = (function () {
     function Automagic(config) {
         this.store = new azsearchstore_1.AzSearchStore();
         this.store.setConfig(config);

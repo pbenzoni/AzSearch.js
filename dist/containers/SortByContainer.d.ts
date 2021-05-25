@@ -13,7 +13,7 @@ export declare const stateProps: {
     css: {
         [key: string]: string;
     };
-    orderby: string;
+    orderby: any;
 };
 export declare const dispatchProps: {
     onSortChange: (fieldName: string) => void;

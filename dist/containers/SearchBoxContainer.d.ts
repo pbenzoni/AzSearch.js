@@ -8,16 +8,16 @@ export interface OwnProps {
     };
 }
 export declare const stateProps: {
-    input: string;
-    preTag: string;
-    postTag: string;
-    suggestions: {}[];
+    input: any;
+    preTag: any;
+    postTag: any;
+    suggestions: any;
     template: Template;
     css: {
         [key: string]: string;
     };
     suggestionValueKey: string;
-    suggesterName: string;
+    suggesterName: any;
 };
 export declare const dispatchProps: {
     onInputChange: (input: string) => void;
