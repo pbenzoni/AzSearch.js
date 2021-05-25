@@ -61,15 +61,15 @@ var RangeFacet = /** @class */ (function (_super) {
                 break;
         }
         var onLowerChange = function (e) {
-            var lower = Date.parse(e.target.value);
-            var upper = Date.parse(upperValue);
+            var lower = Date.parse(e.target.value + " GMT-0400"); // adding timezones to deal with auto offsetting
+            var upper = Date.parse(upperValue + " GMT-0400");
             lowerValue = e.target.value;
             onRangeChange(new Date(lower), new Date(upper));
             afterRangeChange();
         };
         var onUpperChange = function (e) {
-            var upper = Date.parse(e.target.value);
-            var lower = Date.parse(lowerValue);
+            var upper = Date.parse(e.target.value + " GMT-0400");
+            var lower = Date.parse(lowerValue + " GMT-0400");
             upperValue = e.target.value;
             onRangeChange(new Date(lower), new Date(upper));
             afterRangeChange();
