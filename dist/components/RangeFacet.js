@@ -90,10 +90,10 @@ var RangeFacet = /** @class */ (function (_super) {
                             "  ",
                             React.createElement("b", null,
                                 " ",
-                                " (" + Numeral(facet.middleBucketCount).format("0,0") + ") ",
+                                " - (" + Numeral(facet.middleBucketCount).format("0,0") + ") - ",
                                 " "),
                             " "),
-                        React.createElement("label", { htmlFor: "end-date" }, " - "),
+                        React.createElement("label", { htmlFor: "end-date" }),
                         React.createElement("input", { id: "end-date", type: "date", className: css.searchFacets__facetControlCheckbox, min: minValue, max: maxValue, step: 1, onChange: function (event) { return onUpperChange(event); }, value: upperValue }))))));
     };
     return RangeFacet;

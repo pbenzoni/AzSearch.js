@@ -85,9 +85,9 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                             value={lowerValue}
                             onChange={event => onLowerChange(event)}
                             />
-                            <span className={css.searchFacets__facetControlRangeLabelRange}>  <b> {" (" + Numeral(facet.middleBucketCount).format("0,0") + ") "} </b> </span>
+                            <span className={css.searchFacets__facetControlRangeLabelRange}>  <b> {" - (" + Numeral(facet.middleBucketCount).format("0,0") + ") - "} </b> </span>
 
-                            <label htmlFor="end-date"> - </label>
+                            <label htmlFor="end-date"></label>
                             <input id="end-date" type="date" className={css.searchFacets__facetControlCheckbox}
                             min={minValue}
                             max={maxValue}
