@@ -29,7 +29,7 @@
   "dependencies": {
     "@babel/runtime": "7.0.0",
     "@types/react-date-range": "^1.1.4",
-    "azsearchstore": "^0.0.27",
+    "azsearchstore": "https://github.com/pbenzoni/AzSearchStore/blob/master/azsearchstore-0.0.32.tgz?raw=true",
     "hogan.js": "3.0.2",
     "moment": "2.18.1",
     "numeral": "^2.0.6",
@@ -66,7 +66,8 @@
     "ts-jest": "^19.0.14",
     "ts-lint": "4.5.1",
     "typescript": "^2.2.2",
-    "webpack": "^2.2.3"
+    "webpack": "^2.2.3",
+    "webpack-cli": "^4.7.0"
   },
   "peerDependencies": {
     "react": "^15.5.4",
