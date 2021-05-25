@@ -46,8 +46,8 @@ var RangeFacet = /** @class */ (function (_super) {
                 var upperDate = facet.filterUpperBound;
                 lowerDate.setHours(0, 0, 0, 0);
                 upperDate.setHours(23, 59, 0, 0);
-                lowerValue = lowerDate.toISOString().split("T")[0];
-                upperValue = upperDate.toISOString().split("T")[0];
+                lowerValue = lowerDate.toLocaleDateString("sv"); // "2020-02-23"
+                upperValue = upperDate.toLocaleDateString("sv");
                 lowerLabel = React.createElement("span", null,
                     " ",
                     facet.filterLowerBound.toLocaleDateString("en-US"),
@@ -57,7 +57,7 @@ var RangeFacet = /** @class */ (function (_super) {
                     facet.filterUpperBound.toLocaleDateString("en-US"),
                     " ");
                 minValue = "2019-01-01";
-                maxValue = (new Date()).toISOString().split("T")[0];
+                maxValue = new Date().toLocaleDateString("sv");
                 break;
         }
         var onLowerChange = function (e) {
