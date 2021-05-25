@@ -56,8 +56,8 @@ var RangeFacet = /** @class */ (function (_super) {
                     " ",
                     facet.filterUpperBound.toLocaleDateString("en-US"),
                     " ");
-                minValue = facet.min.toISOString().split("T")[0];
-                maxValue = facet.max.toISOString().split("T")[0];
+                minValue = "2019-01-01";
+                maxValue = (new Date()).toISOString().split("T")[0];
                 break;
         }
         var onLowerChange = function (e) {

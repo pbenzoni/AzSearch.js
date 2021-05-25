@@ -44,8 +44,8 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                 upperValue = upperDate.toISOString().split("T")[0];
                 lowerLabel = <span> {(facet.filterLowerBound as Date).toLocaleDateString("en-US")} </span>;
                 upperLabel = <span> {(facet.filterUpperBound as Date).toLocaleDateString("en-US")} </span>;
-                minValue = (facet.min as Date).toISOString().split("T")[0];
-                maxValue = (facet.max as Date).toISOString().split("T")[0];
+                minValue = "2019-01-01";
+                maxValue = (new Date()).toISOString().split("T")[0];
                 break;
         }
 
