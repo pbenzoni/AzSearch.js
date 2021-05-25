@@ -77,21 +77,17 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                 <div className={css.searchFacets__facetControlContainer}>
                     <ul className={css.searchFacets__facetControlList}>
                         <li className={css.searchFacets__facetControl}>
-                            <label htmlFor="start-date">From - </label>
+                            <label htmlFor="start-date">Date Range: </label>
                             <input id="start-date" type="date" className={css.searchFacets__facetControlCheckbox}
                             min={minValue}
                             max={maxValue}
                             step={1}
                             value={lowerValue}
                             onChange={event => onLowerChange(event)}
-
                             />
-                        </li>
-                        <li className={css.searchFacets__facetControlRangeLabel}>
                             <span className={css.searchFacets__facetControlRangeLabelRange}>  <b> {" (" + Numeral(facet.middleBucketCount).format("0,0") + ") "} </b> </span>
-                        </li>
-                        <li className={css.searchFacets__facetControl}>
-                            <label htmlFor="end-date">To - </label>
+
+                            <label htmlFor="end-date"> - </label>
                             <input id="end-date" type="date" className={css.searchFacets__facetControlCheckbox}
                             min={minValue}
                             max={maxValue}
@@ -101,6 +97,7 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                             value={upperValue}/>
 
                         </li>
+
                     </ul>
                 </div>
             </div>

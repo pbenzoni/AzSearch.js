@@ -84,18 +84,16 @@ var RangeFacet = /** @class */ (function (_super) {
             React.createElement("div", { className: css.searchFacets__facetControlContainer },
                 React.createElement("ul", { className: css.searchFacets__facetControlList },
                     React.createElement("li", { className: css.searchFacets__facetControl },
-                        React.createElement("label", { htmlFor: "start-date" }, "From - "),
-                        React.createElement("input", { id: "start-date", type: "date", className: css.searchFacets__facetControlCheckbox, min: minValue, max: maxValue, step: 1, value: lowerValue, onChange: function (event) { return onLowerChange(event); } })),
-                    React.createElement("li", { className: css.searchFacets__facetControlRangeLabel },
+                        React.createElement("label", { htmlFor: "start-date" }, "Date Range: "),
+                        React.createElement("input", { id: "start-date", type: "date", className: css.searchFacets__facetControlCheckbox, min: minValue, max: maxValue, step: 1, value: lowerValue, onChange: function (event) { return onLowerChange(event); } }),
                         React.createElement("span", { className: css.searchFacets__facetControlRangeLabelRange },
                             "  ",
                             React.createElement("b", null,
                                 " ",
                                 " (" + Numeral(facet.middleBucketCount).format("0,0") + ") ",
                                 " "),
-                            " ")),
-                    React.createElement("li", { className: css.searchFacets__facetControl },
-                        React.createElement("label", { htmlFor: "end-date" }, "To - "),
+                            " "),
+                        React.createElement("label", { htmlFor: "end-date" }, " - "),
                         React.createElement("input", { id: "end-date", type: "date", className: css.searchFacets__facetControlCheckbox, min: minValue, max: maxValue, step: 1, onChange: function (event) { return onUpperChange(event); }, value: upperValue }))))));
     };
     return RangeFacet;
