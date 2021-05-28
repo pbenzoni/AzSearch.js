@@ -77,6 +77,7 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                 <div className={css.searchFacets__facetControlContainer}>
                     <ul className={css.searchFacets__facetControlList}>
                         <li className={css.searchFacets__facetControl}>
+                            <label htmlFor="start-date"></label>
                             <input id="start-date" type="date" className={css.searchFacets__facetControlCheckbox}
                             min={minValue}
                             max={maxValue}
