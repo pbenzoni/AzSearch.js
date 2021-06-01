@@ -61,7 +61,7 @@ class Automagic {
     }
 
     public addRangeFacet(htmlId: string, fieldName: string, dataType: Store.RangeDataType, min: number | Date, max: number | Date, lower: number | Date, upper: number | Date, cssClasses?: { [key: string]: string; }) {
-        this.store.addRangeFacet(fieldName, dataType, min, max);
+        this.store.addRangeFacet(fieldName, dataType, min, max,lower, upper);
         render(
             <Provider store={this.store.store}>
                 <RangeFacetContainer facet={fieldName} css={cssClasses} />
