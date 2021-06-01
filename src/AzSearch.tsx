@@ -60,7 +60,7 @@ class Automagic {
         );
     }
 
-    public addRangeFacet(htmlId: string, fieldName: string, dataType: Store.RangeDataType, min: number | Date, max: number | Date, cssClasses?: { [key: string]: string; }) {
+    public addRangeFacet(htmlId: string, fieldName: string, dataType: Store.RangeDataType, min: number | Date, max: number | Date, lower: number | Date, upper: number | Date, cssClasses?: { [key: string]: string; }) {
         this.store.addRangeFacet(fieldName, dataType, min, max);
         render(
             <Provider store={this.store.store}>

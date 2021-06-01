@@ -25,6 +25,9 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
             return <div></div>;
         }
 
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
         switch (facet.dataType) {
             case "number":
                 lowerValue = facet.filterLowerBound as number;
@@ -40,8 +43,18 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
 
                 lowerDate.setHours(0, 0, 0, 0);
                 upperDate.setHours(23, 59, 0, 0);
-                lowerValue = lowerDate.toLocaleDateString("sv"); // "2020-02-23"
-                upperValue = upperDate.toLocaleDateString("sv");
+                if(urlParams.has('start-date')){
+                    lowerValue = urlParams.get('start-date');
+                }
+                else{
+                    lowerValue = lowerDate.toLocaleDateString("sv"); // "2020-02-23"
+                }
+                if(urlParams.has('end-date')){
+                    lowerValue = urlParams.get('end-date');
+                }
+                else{
+                    upperValue = upperDate.toLocaleDateString("sv");
+                }
                 lowerLabel = <span> {(facet.filterLowerBound as Date).toLocaleDateString("en-US")} </span>;
                 upperLabel = <span> {(facet.filterUpperBound as Date).toLocaleDateString("en-US")} </span>;
                 minValue = "2019-01-01";

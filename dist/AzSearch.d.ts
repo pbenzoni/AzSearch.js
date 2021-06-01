@@ -43,7 +43,7 @@ declare class Automagic {
     addCheckboxFacet(htmlId: string, fieldName: string, dataType: Store.CheckboxDataType, count: number, cssClasses?: {
         [key: string]: string;
     }): void;
-    addRangeFacet(htmlId: string, fieldName: string, dataType: Store.RangeDataType, min: number | Date, max: number | Date, cssClasses?: {
+    addRangeFacet(htmlId: string, fieldName: string, dataType: Store.RangeDataType, min: number | Date, max: number | Date, lower: number | Date, upper: number | Date, cssClasses?: {
         [key: string]: string;
     }): void;
     addResults(htmlId: string, parameters?: Store.SearchParametersUpdate, mustacheTemplate?: string, cssClasses?: {
