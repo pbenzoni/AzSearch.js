@@ -50,9 +50,12 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                 maxValue = new Date().toLocaleDateString("sv");
                 break;
         }
-
+        let keydown = (e) => {
+            if (e.target.value < 2000) {
+                e.preventDefault();
+            }
+        };
         let onLowerChange = (e) => {
-
             let lower = Date.parse(e.target.value + " GMT-0800"); // adding timezones to deal with auto offsetting
             let upper = Date.parse(upperValue + " GMT-0800");
             lowerValue = e.target.value;
@@ -83,6 +86,7 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                             max={maxValue}
                             step={1}
                             value={lowerValue}
+                            onKeyDown={e => keydown(e)}
                             onChange={event => onLowerChange(event)}
                             />
                             <span className={css.searchFacets__facetControlRangeLabelRange}> - </span>
@@ -91,6 +95,7 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                             <input id="end-date" type="date" className={css.searchFacets__facetControlCheckbox}
                             max={maxValue}
                             step={1}
+                            onKeyDown={e => keydown(e)}
                             onChange={event => onUpperChange(event)}
                             value={upperValue}/>
 
