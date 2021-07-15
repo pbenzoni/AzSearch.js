@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) =
   return {
     onClear: () => {
       // Clear URL Params
-      var url = document.location.href;
+      let url = document.location.href;
       window.history.pushState({}, "", url.split("?")[0]);
       dispatch(facetsActions.clearFacetsSelections());
       dispatch(searchParameterActions.setPage(1));

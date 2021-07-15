@@ -14,7 +14,7 @@ var React = require("react");
 var objAssign = require("object-assign");
 var css_1 = require("../utils/css");
 var Numeral = require("numeral");
-var RangeFacet = (function (_super) {
+var RangeFacet = /** @class */ (function (_super) {
     __extends(RangeFacet, _super);
     function RangeFacet() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -32,6 +32,8 @@ var RangeFacet = (function (_super) {
         if (!facet || beforeFirstRequest) {
             return React.createElement("div", null);
         }
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
         switch (facet.dataType) {
             case "number":
                 lowerValue = facet.filterLowerBound;
@@ -61,18 +63,22 @@ var RangeFacet = (function (_super) {
                 break;
         }
         var onLowerChange = function (e) {
-            var lower = Date.parse(e.target.value + " GMT-0800"); // adding timezones to deal with auto offsetting
-            var upper = Date.parse(upperValue + " GMT-0800");
-            lowerValue = e.target.value;
-            onRangeChange(new Date(lower), new Date(upper));
-            afterRangeChange();
+            if (e.target.value.substring(0, 4) < 2000) {
+                var lower = Date.parse(e.target.value + " GMT-0800"); // adding timezones to deal with auto offsetting
+                var upper = Date.parse(upperValue + " GMT-0800");
+                lowerValue = e.target.value;
+                onRangeChange(new Date(lower), new Date(upper));
+                afterRangeChange();
+            }
         };
         var onUpperChange = function (e) {
-            var upper = Date.parse(e.target.value + " GMT-0800");
-            var lower = Date.parse(lowerValue + " GMT-0800");
-            upperValue = e.target.value;
-            onRangeChange(new Date(lower), new Date(upper));
-            afterRangeChange();
+            if (e.target.value.substring(0, 4) > 2000) {
+                var upper = Date.parse(e.target.value + " GMT-0800");
+                var lower = Date.parse(lowerValue + " GMT-0800");
+                upperValue = e.target.value;
+                onRangeChange(new Date(lower), new Date(upper));
+                afterRangeChange();
+            }
         };
         return (React.createElement("div", { id: "range-facet", className: css.searchFacets__rangeFacet },
             React.createElement("div", { className: css.searchFacets__facetHeaderContainer },
@@ -84,15 +90,9 @@ var RangeFacet = (function (_super) {
             React.createElement("div", { className: css.searchFacets__facetControlContainer },
                 React.createElement("ul", { className: css.searchFacets__facetControlList },
                     React.createElement("li", { className: css.searchFacets__facetControl },
-                        React.createElement("label", { htmlFor: "start-date" }, "Date Range: "),
+                        React.createElement("label", { htmlFor: "start-date" }),
                         React.createElement("input", { id: "start-date", type: "date", className: css.searchFacets__facetControlCheckbox, min: minValue, max: maxValue, step: 1, value: lowerValue, onChange: function (event) { return onLowerChange(event); } }),
-                        React.createElement("span", { className: css.searchFacets__facetControlRangeLabelRange },
-                            "  ",
-                            React.createElement("b", null,
-                                " ",
-                                " - (" + Numeral(facet.middleBucketCount).format("0,0") + ") - ",
-                                " "),
-                            " "),
+                        React.createElement("span", { className: css.searchFacets__facetControlRangeLabelRange }, " - "),
                         React.createElement("label", { htmlFor: "end-date" }),
                         React.createElement("input", { id: "end-date", type: "date", className: css.searchFacets__facetControlCheckbox, min: minValue, max: maxValue, step: 1, onChange: function (event) { return onUpperChange(event); }, value: upperValue }))))));
     };

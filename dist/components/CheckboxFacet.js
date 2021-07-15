@@ -14,7 +14,7 @@ var React = require("react");
 var objAssign = require("object-assign");
 var css_1 = require("../utils/css");
 var Numeral = require("numeral");
-var CheckboxFacet = (function (_super) {
+var CheckboxFacet = /** @class */ (function (_super) {
     __extends(CheckboxFacet, _super);
     function CheckboxFacet() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -33,7 +33,7 @@ var CheckboxFacet = (function (_super) {
             return (React.createElement("li", { key: index + 1, className: css.searchFacets__facetControl },
                 React.createElement("div", { className: css.searchFacets__facetControlCheckboxWrapper },
                     React.createElement("label", { className: "checkboxLabel" },
-                        React.createElement("input", { type: "checkbox", className: css.searchFacets__facetControlCheckbox, onChange: toggleFacet.bind(null, valueKey), checked: value.selected }),
+                        React.createElement("input", { type: "checkbox", id: facet.key + "-" + value.value, className: css.searchFacets__facetControlCheckbox, onChange: toggleFacet.bind(null, valueKey), checked: value.selected }),
                         " ",
                         value.value + " ",
                         countDisplay))));

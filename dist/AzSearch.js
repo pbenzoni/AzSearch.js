@@ -28,7 +28,7 @@ var Components = { SearchBox: SearchBox_1.default, CheckboxFacet: CheckboxFacet_
 exports.Components = Components;
 var Containers = { CheckboxFacetContainer: CheckboxFacetContainer_1.CheckboxFacetContainer, ResultsContainer: ResultsContainer_1.ResultsContainer, SearchBoxContainer: SearchBoxContainer_1.SearchBoxContainer, ClearFiltersButtonContainer: ClearFiltersButtonContainer_1.ClearFiltersButtonContainer, SortByContainer: SortByContainer_1.SortByContainer, StaticFilterContainer: StaticFilterContainer_1.StaticFilterContainer, LoadingIndicatorContainer: LoadingIndicatorContainer_1.LoadingIndicatorContainer };
 exports.Containers = Containers;
-var Automagic = (function () {
+var Automagic = /** @class */ (function () {
     function Automagic(config) {
         this.store = new azsearchstore_1.AzSearchStore();
         this.store.setConfig(config);
@@ -39,13 +39,13 @@ var Automagic = (function () {
         react_dom_1.render(React.createElement(react_redux_1.Provider, { store: this.store.store },
             React.createElement(SearchBoxContainer_1.SearchBoxContainer, { template: template, css: cssClasses, suggestionValueKey: suggestionValueKey })), document.getElementById(htmlId));
     };
-    Automagic.prototype.addCheckboxFacet = function (htmlId, fieldName, dataType, cssClasses) {
-        this.store.addCheckboxFacet(fieldName, dataType);
+    Automagic.prototype.addCheckboxFacet = function (htmlId, fieldName, dataType, count, cssClasses) {
+        this.store.addCheckboxFacet(fieldName, dataType, count);
         react_dom_1.render(React.createElement(react_redux_1.Provider, { store: this.store.store },
             React.createElement(CheckboxFacetContainer_1.CheckboxFacetContainer, { facet: fieldName, css: cssClasses })), document.getElementById(htmlId));
     };
-    Automagic.prototype.addRangeFacet = function (htmlId, fieldName, dataType, min, max, cssClasses) {
-        this.store.addRangeFacet(fieldName, dataType, min, max);
+    Automagic.prototype.addRangeFacet = function (htmlId, fieldName, dataType, min, max, lower, upper, cssClasses) {
+        this.store.addRangeFacet(fieldName, dataType, min, max, lower, upper);
         react_dom_1.render(React.createElement(react_redux_1.Provider, { store: this.store.store },
             React.createElement(RangeFacetContainer_1.RangeFacetContainer, { facet: fieldName, css: cssClasses })), document.getElementById(htmlId));
     };

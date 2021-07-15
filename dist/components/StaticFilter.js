@@ -13,7 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var objAssign = require("object-assign");
 var css_1 = require("../utils/css");
-var StaticFilter = (function (_super) {
+var StaticFilter = /** @class */ (function (_super) {
     __extends(StaticFilter, _super);
     function StaticFilter() {
         return _super !== null && _super.apply(this, arguments) || this;
