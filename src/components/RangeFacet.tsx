@@ -53,7 +53,7 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
         }
 
         let onLowerChange = (e) => {
-            if ( e.target.value.substring(0, 4) < 2000 ) {
+            if ( e.target.value.substring(0, 4) > 2000 ) {
                 let lower = Date.parse(e.target.value + " GMT-0800"); // adding timezones to deal with auto offsetting
                 let upper = Date.parse(upperValue + " GMT-0800");
                 lowerValue = e.target.value;
