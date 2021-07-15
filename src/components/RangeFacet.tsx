@@ -47,30 +47,24 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                 upperValue = upperDate.toLocaleDateString("sv");
                 lowerLabel = <span> {(facet.filterLowerBound as Date).toLocaleDateString("en-US")} </span>;
                 upperLabel = <span> {(facet.filterUpperBound as Date).toLocaleDateString("en-US")} </span>;
-                minValue = "2019-01-01";
                 maxValue = new Date().toLocaleDateString("sv");
                 break;
         }
 
         let onLowerChange = (e) => {
-            if ( e.target.value.substring(0, 4) > 2000 ) {
-                let lower = Date.parse(e.target.value + " GMT-0800"); // adding timezones to deal with auto offsetting
-                let upper = Date.parse(upperValue + " GMT-0800");
-                lowerValue = e.target.value;
-                onRangeChange(new Date(lower), new Date(upper));
-                afterRangeChange();
-            }
 
+            let lower = Date.parse(e.target.value + " GMT-0800"); // adding timezones to deal with auto offsetting
+            let upper = Date.parse(upperValue + " GMT-0800");
+            lowerValue = e.target.value;
+            onRangeChange(new Date(lower), new Date(upper));
+            afterRangeChange();
         };
         let onUpperChange = (e) => {
-            if ( e.target.value.substring(0, 4) > 2000 ) {
-                let upper = Date.parse(e.target.value  + " GMT-0800");
-                let lower = Date.parse(lowerValue  + " GMT-0800");
-                upperValue = e.target.value;
-                onRangeChange(new Date(lower), new Date(upper));
-                afterRangeChange();
-            }
-
+            let upper = Date.parse(e.target.value  + " GMT-0800");
+            let lower = Date.parse(lowerValue  + " GMT-0800");
+            upperValue = e.target.value;
+            onRangeChange(new Date(lower), new Date(upper));
+            afterRangeChange();
         };
         return (
             <div id="range-facet" className={css.searchFacets__rangeFacet}>
@@ -86,7 +80,6 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
                         <li className={css.searchFacets__facetControl}>
                             <label htmlFor="start-date"></label>
                             <input id="start-date" type="date" className={css.searchFacets__facetControlCheckbox}
-                            min={minValue}
                             max={maxValue}
                             step={1}
                             value={lowerValue}
@@ -96,11 +89,9 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
 
                             <label htmlFor="end-date"></label>
                             <input id="end-date" type="date" className={css.searchFacets__facetControlCheckbox}
-                            min={minValue}
                             max={maxValue}
                             step={1}
                             onChange={event => onUpperChange(event)}
-
                             value={upperValue}/>
 
                         </li>
