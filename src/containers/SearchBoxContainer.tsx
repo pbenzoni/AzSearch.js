@@ -30,37 +30,9 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             dispatch(suggestionsActions.clearSuggestions());
         },
         clearFacetsAndSearch: () => {
-            // var facetToSave   = {};
-            //  Object.keys(savedRange.facets).map(key => {
-            //     if("tweetDate" === key){
-            //         savedRange.facets[key].min  = savedRange.facets[key].filterLowerBound;
-            //         savedRange.facets[key].max  = savedRange.facets[key].filterUpperBound;
-            let facetToSave   = {};
-            let min  = savedRange.facets["tweetDate" ].filterLowerBound;
-            let max  = savedRange.facets["tweetDate" ].filterUpperBound;
-
-             Object.keys(savedRange.facets).map(key => {
-                if ( "tweetDate" === key ) {
-                    savedRange.facets[key].min = savedRange.facets[key].filterLowerBound;
-                    savedRange.facets[key].max = savedRange.facets[key].filterUpperBound;
-
-                    facetToSave = savedRange.facets[key];
-                }
-            });
-
-            //         facetToSave= savedRange.facets[key]
-            //     }
-            // });
-            // savedRange.facets = {}
-            // savedRange.facets["tweetDate"] = facetToSave
-
-            // console.log(facetToSave)
             dispatch(searchParameterActions.setPage(1));
-            //
-//            dispatch(facetsActions.setFacetsValues(savedRange.facets));
-            dispatch(facetsActions.setFacetRange("tweetDate", min, max));
-
-            dispatch(asyncActions.fetchSearchResultsFromFacet);
+            dispatch(facetsActions.clearFacetsSelections());
+            dispatch(asyncActions.fetchSearchResults);
         }
     };
 };
