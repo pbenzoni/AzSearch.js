@@ -13,6 +13,8 @@ var mapDispatchToProps = function (dispatch, ownProps) {
             var url = document.location.href;
             window.history.pushState({}, "", url.split("?")[0]);
             dispatch(azsearchstore_1.facetsActions.clearFacetsSelections());
+            dispatch(azsearchstore_1.searchParameterActions.setPage(1));
+            dispatch(azsearchstore_1.asyncActions.fetchSearchResults);
         }
     };
 };
