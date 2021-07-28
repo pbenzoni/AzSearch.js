@@ -19,9 +19,9 @@ var mapDispatchToProps = function (dispatch) {
             dispatch(azsearchstore_1.suggestionsActions.clearSuggestions());
         },
         clearFacetsAndSearch: function () {
+            // dispatch(facetsActions.setFacetRange("tweetDate", savedRange.facets["tweetDate" ].filterLowerBound, savedRange.facets["tweetDate" ].filterUpperBound;));
             dispatch(azsearchstore_1.searchParameterActions.setPage(1));
-            dispatch(azsearchstore_1.facetsActions.clearFacetsSelections());
-            dispatch(azsearchstore_1.asyncActions.fetchSearchResults);
+            dispatch(azsearchstore_1.asyncActions.fetchSearchResultsFromFacet);
         }
     };
 };

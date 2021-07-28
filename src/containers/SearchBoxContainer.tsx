@@ -30,9 +30,9 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             dispatch(suggestionsActions.clearSuggestions());
         },
         clearFacetsAndSearch: () => {
+            // dispatch(facetsActions.setFacetRange("tweetDate", savedRange.facets["tweetDate" ].filterLowerBound, savedRange.facets["tweetDate" ].filterUpperBound;));
             dispatch(searchParameterActions.setPage(1));
-            dispatch(facetsActions.clearFacetsSelections());
-            dispatch(asyncActions.fetchSearchResults);
+            dispatch(asyncActions.fetchSearchResultsFromFacet);
         }
     };
 };
