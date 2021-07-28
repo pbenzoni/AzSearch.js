@@ -9,9 +9,7 @@ function getReturnType(expression) {
 var mapDispatchToProps = function (dispatch, ownProps) {
     return {
         toggleFacet: function (value) {
-            dispatch(azsearchstore_1.searchParameterActions.setPage(1));
             dispatch(azsearchstore_1.facetsActions.toggleCheckboxFacetSelection(ownProps.facet, value));
-            dispatch(azsearchstore_1.asyncActions.fetchSearchResultsFromFacet);
         },
     };
 };

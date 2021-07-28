@@ -12,8 +12,7 @@ var mapDispatchToProps = function (dispatch, ownProps) {
             dispatch(azsearchstore_1.facetsActions.setFacetRange(ownProps.facet, lowerBound, upperBound));
         },
         afterRangeChange: function () {
-            dispatch(azsearchstore_1.searchParameterActions.setPage(1));
-            dispatch(azsearchstore_1.asyncActions.fetchSearchResultsFromFacet);
+            console.log("Range changed");
         }
     };
 };

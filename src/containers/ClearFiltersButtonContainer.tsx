@@ -19,8 +19,6 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) =
       let url = document.location.href;
       window.history.pushState({}, "", url.split("?")[0]);
       dispatch(facetsActions.clearFacetsSelections());
-      dispatch(searchParameterActions.setPage(1));
-      dispatch(asyncActions.fetchSearchResults);
     }
   };
 };
