@@ -19,7 +19,8 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) =
             dispatch(facetsActions.setFacetRange(ownProps.facet, lowerBound, upperBound));
         },
         afterRangeChange: () => {
-            console.log("Range changed");
+            dispatch(searchParameterActions.setPage(1));
+            dispatch(asyncActions.fetchSearchResultsFromFacet);
         }
     };
 };
