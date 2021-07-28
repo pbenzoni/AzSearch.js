@@ -56,7 +56,6 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
 
             // console.log(facetToSave)
             dispatch(searchParameterActions.setPage(1));
-            dispatch(facetsActions.clearFacetsSelections());
             //
 //            dispatch(facetsActions.setFacetsValues(savedRange.facets));
             dispatch(facetsActions.setFacetRange("tweetDate", min, max));

@@ -41,7 +41,6 @@ var mapDispatchToProps = function (dispatch) {
             // savedRange.facets["tweetDate"] = facetToSave
             // console.log(facetToSave)
             dispatch(azsearchstore_1.searchParameterActions.setPage(1));
-            dispatch(azsearchstore_1.facetsActions.clearFacetsSelections());
             //
             //            dispatch(facetsActions.setFacetsValues(savedRange.facets));
             dispatch(azsearchstore_1.facetsActions.setFacetRange("tweetDate", min, max));
