@@ -9,9 +9,14 @@ function getReturnType(expression) {
 var mapDispatchToProps = function (dispatch, ownProps) {
     return {
         onClear: function () {
-            // Clear URL Params
-            var url = document.location.href;
-            window.history.pushState({}, "", url.split("?")[0]);
+            // Clear URL Params, except search term
+            var queryString = window.location.search;
+            var currUrlParams = new URLSearchParams(queryString);
+            var newUrlParams = new URLSearchParams();
+            if (currUrlParams.has("q")) {
+                newUrlParams.append("q", currUrlParams.get("q"));
+            }
+            window.history.replaceState({}, "", location.pathname + "?" + newUrlParams.toString());
             dispatch(azsearchstore_1.facetsActions.clearFacetsSelections());
             dispatch(azsearchstore_1.searchParameterActions.setPage(1));
             dispatch(azsearchstore_1.asyncActions.fetchSearchResults);
