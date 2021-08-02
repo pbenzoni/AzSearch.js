@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) =
     return {
         onRangeChange: (lowerBound: Date, upperBound: Date) => {
 
-            dispatch(facetsActions.setFacetRange(ownProps.facet, new Date(lowerBound.getTime() + lowerBound.getTimezoneOffset() * 60000),  new Date(upperBound.getTime() + upperBound.getTimezoneOffset() * 60000)));
+            dispatch(facetsActions.setFacetRange(ownProps.facet, new Date(lowerBound.toISOString()),  new Date(upperBound.toISOString())));
         },
         afterRangeChange: () => {
             console.log("after range change");
