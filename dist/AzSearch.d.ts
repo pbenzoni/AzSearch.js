@@ -37,6 +37,7 @@ declare let Containers: {
 declare class Automagic {
     store: AzSearchStore;
     constructor(config: Store.Config);
+    setSearchParameters(parameters: Store.SearchParametersUpdate): void;
     addSearchBox(htmlId: string, parameters?: Store.SuggestionsParametersUpdate, suggestionValueKey?: string, mustacheTemplate?: string, cssClasses?: {
         [key: string]: string;
     }): void;

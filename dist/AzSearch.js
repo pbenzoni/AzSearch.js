@@ -33,6 +33,9 @@ var Automagic = /** @class */ (function () {
         this.store = new azsearchstore_1.AzSearchStore();
         this.store.setConfig(config);
     }
+    Automagic.prototype.setSearchParameters = function (parameters) {
+        this.store.updateSearchParameters(parameters);
+    };
     Automagic.prototype.addSearchBox = function (htmlId, parameters, suggestionValueKey, mustacheTemplate, cssClasses) {
         this.store.updateSuggestionsParameters(parameters);
         var template = mustacheTemplate ? hogan_js_1.compile(mustacheTemplate) : null;

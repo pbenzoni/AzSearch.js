@@ -39,6 +39,10 @@ class Automagic {
         this.store.setConfig(config);
     }
 
+    public setSearchParameters(parameters: Store.SearchParametersUpdate) {
+        this.store.updateSearchParameters(parameters);
+    }
+
     public addSearchBox(htmlId: string, parameters?: Store.SuggestionsParametersUpdate, suggestionValueKey?: string, mustacheTemplate?: string, cssClasses?: { [key: string]: string; }) {
         this.store.updateSuggestionsParameters(parameters);
         let template = mustacheTemplate ? compile(mustacheTemplate) : null;
