@@ -9,7 +9,7 @@ function getReturnType(expression) {
 var mapDispatchToProps = function (dispatch, ownProps) {
     return {
         onRangeChange: function (lowerBound, upperBound) {
-            dispatch(azsearchstore_1.facetsActions.setFacetRange(ownProps.facet, new Date(lowerBound.toISOString()), new Date(upperBound.toISOString())));
+            dispatch(azsearchstore_1.facetsActions.setFacetRange(ownProps.facet, lowerBound, upperBound));
         },
         afterRangeChange: function () {
             console.log("after range change");
