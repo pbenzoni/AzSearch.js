@@ -15,8 +15,8 @@ export interface OwnProps {
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) => {
     return {
-        onRangeChange: (lowerBound: number | Date, upperBound: number | Date) => {
-            dispatch(facetsActions.setFacetRange(ownProps.facet, lowerBound, upperBound));
+        onRangeChange: (lowerBound:  Date, upperBound: Date) => {
+            dispatch(facetsActions.setFacetRange(ownProps.facet, lowerBound.setUTCHours(0, 0, 0, 0), upperBound.setUTCHours(0, 0, 0, 0)));
         },
         afterRangeChange: () => {
             console.log("after range change");

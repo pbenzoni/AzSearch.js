@@ -13,7 +13,7 @@ export declare const stateProps: {
     };
 };
 export declare const dispatchProps: {
-    onRangeChange: (lowerBound: number | Date, upperBound: number | Date) => void;
+    onRangeChange: (lowerBound: Date, upperBound: Date) => void;
     afterRangeChange: () => void;
 };
 export declare type PropsType = typeof stateProps & typeof dispatchProps & OwnProps;
