@@ -42,6 +42,9 @@ var SearchBox = /** @class */ (function (_super) {
         if (evt.key === "Enter") {
             return this.props.clearFacetsAndSearch();
         }
+        else {
+            return /[a-zA-Z0-9~*|-\s()"'&+:?\[\]]+/i.test(evt.key);
+        }
     };
     SearchBox.prototype.getSuggestionValue = function (suggestion) {
         var suggestionValueKey = this.props.suggestionValueKey ? this.props.suggestionValueKey : "@search.text";

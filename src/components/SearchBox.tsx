@@ -22,6 +22,9 @@ class SearchBox extends React.PureComponent<PropsType, State> {
         if (evt.key === "Enter") {
             return this.props.clearFacetsAndSearch();
         }
+        else {
+            return /[a-zA-Z0-9~*|-\s()"'&+:?\[\]]+/i.test(evt.key);
+        }
     }
     getSuggestionValue(suggestion: any) {
         let suggestionValueKey = this.props.suggestionValueKey ? this.props.suggestionValueKey : "@search.text";
