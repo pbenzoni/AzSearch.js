@@ -11,7 +11,7 @@ class SearchBox extends React.PureComponent<PropsType, State> {
         if (newValue.method === "up" || newValue.method === "down") {
             return;
         }
-        const input = newValue.newValue;
+        const input = newValue.newValue.replace( "^", "" );
         // remove highlight tags for the stored input
         this.props.onInputChange(input);
         if (newValue.method === "click" || newValue.method === "enter") {
@@ -22,9 +22,6 @@ class SearchBox extends React.PureComponent<PropsType, State> {
         if (evt.key === "Enter") {
             return this.props.clearFacetsAndSearch();
         }
-        else {
-            return /[a-zA-Z0-9~*|-\s()"'&+:?\[\]]+/i.test(evt.key);
-        }
     }
     getSuggestionValue(suggestion: any) {
         let suggestionValueKey = this.props.suggestionValueKey ? this.props.suggestionValueKey : "@search.text";
@@ -34,7 +31,7 @@ class SearchBox extends React.PureComponent<PropsType, State> {
         let css = objAssign({}, defaultCss, this.props.css);
         return (
             <div className={css.searchBox__inputContainer}>
-                <input {...inputProps} type="text" autoFocus></input>
+                <input {...inputProps} type="text" minlength="3" autoFocus></input>
                 <span className={css.searchBox__buttonContainer}>
                     <button className={css.searchBox__button} type="button" onClick={this.props.clearFacetsAndSearch}><span className={css.searchBox__buttonIcon}></span>&nbsp;</button>
                 </span>
