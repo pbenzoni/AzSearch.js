@@ -31,7 +31,7 @@ var SearchBox = /** @class */ (function (_super) {
         if (newValue.method === "up" || newValue.method === "down") {
             return;
         }
-        var input = newValue.newValue.replace("^", "");
+        var input = newValue.newValue.replace("^", "").replace("!", "-");
         // remove highlight tags for the stored input
         this.props.onInputChange(input);
         if (newValue.method === "click" || newValue.method === "enter") {
@@ -50,7 +50,7 @@ var SearchBox = /** @class */ (function (_super) {
     SearchBox.prototype.renderInputComponent = function (inputProps) {
         var css = objAssign({}, css_1.defaultCss, this.props.css);
         return (React.createElement("div", { className: css.searchBox__inputContainer },
-            React.createElement("input", __assign({}, inputProps, { type: "text", minlength: "3", autoFocus: true })),
+            React.createElement("input", __assign({}, inputProps, { type: "text", autoFocus: true })),
             React.createElement("span", { className: css.searchBox__buttonContainer },
                 React.createElement("button", { className: css.searchBox__button, type: "button", onClick: this.props.clearFacetsAndSearch },
                     React.createElement("span", { className: css.searchBox__buttonIcon }),
