@@ -14,7 +14,7 @@ class StaticFilter extends React.PureComponent<PropsType, State> {
     if (beforeFirstRequest) return <div></div>;
 
     let options = filters.map((filter, index) => {
-      return <option  id={filterKey + "-" + filter.filter} key={index} selected={filter.filter === activeFilter} value={filter.filter}>{filter.displayName ? filter.displayName : filter.filter}</option>;
+      return <option  id={filterKey + "-" + filter.displayName} key={index} selected={filter.filter === activeFilter} value={filter.filter}>{filter.displayName ? filter.displayName : filter.filter}</option>;
     });
 
     let onChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
