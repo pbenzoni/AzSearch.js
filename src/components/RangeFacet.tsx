@@ -53,16 +53,16 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
 
         let onLowerChange = (e) => {
             let target = e.hasOwnProperty("target") ? e.target.value : e;
-            let lower = Date.parse(target + " GMT-0800"); // adding timezones to deal with auto offsetting
-            let upper = Date.parse(upperValue + " GMT-0800");
+            let lower = Date.parse(target + "T00:00:00-08:00"); // adding timezones to deal with auto offsetting
+            let upper = Date.parse(upperValue + "T00:00:00-08:00");
             lowerValue = target;
             onRangeChange(new Date(lower), new Date(upper));
             afterRangeChange();
         };
         let onUpperChange = (e) => {
             let target = e.hasOwnProperty("target") ? e.target.value : e;
-            let upper = Date.parse(target + " GMT-0800");
-            let lower = Date.parse(lowerValue  + " GMT-0800");
+            let upper = Date.parse(target + "T00:00:00-08:00");
+            let lower = Date.parse(lowerValue  + "T00:00:00-08:00");
             upperValue = target;
             onRangeChange(new Date(lower), new Date(upper));
             afterRangeChange();
