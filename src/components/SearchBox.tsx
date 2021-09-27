@@ -23,7 +23,7 @@ class SearchBox extends React.PureComponent<PropsType, State> {
         let sanitized = "";
         sanitized = input.replace( "^", "" ).replace( "!", "-" );
         if(sanitized.charAt(0) == "*"){
-            sanitized = sanitized.substr(1) + sanitized.substr(0,1); // appends *(first character) to end
+            sanitized = sanitized.substr(1); // removes * if first char
         }
         return sanitized;
     }
