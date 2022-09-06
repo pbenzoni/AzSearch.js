@@ -25,7 +25,7 @@ class CheckboxFacet extends React.PureComponent<PropsType, State> {
             return (
                 <li key={index + 1} className={css.searchFacets__facetControl}>
                     <div className={css.searchFacets__facetControlCheckboxWrapper}>
-                        <label className="checkboxLabel">
+                        <label className="checkboxLabel" id={"label" + facet.key + "-" + value.value + index} >
                             <input type="checkbox" id={facet.key + "-" + value.value} className={css.searchFacets__facetControlCheckbox} onChange={toggleFacet.bind(null, valueKey)} checked={value.selected}/> {value.value + " "}{countDisplay}
                         </label>
                     </div>
