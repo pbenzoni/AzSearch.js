@@ -10,8 +10,6 @@ var mapDispatchToProps = function (dispatch, ownProps) {
     return {
         onFilterChange: function (filter) {
             dispatch(azsearchstore_1.facetsActions.setGlobalFilter(ownProps.filterKey, filter));
-            dispatch(azsearchstore_1.searchParameterActions.setPage(1));
-            dispatch(azsearchstore_1.asyncActions.fetchSearchResultsFromFacet);
         }
     };
 };

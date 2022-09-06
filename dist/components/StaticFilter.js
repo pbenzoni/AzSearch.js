@@ -24,7 +24,7 @@ var StaticFilter = /** @class */ (function (_super) {
         if (beforeFirstRequest)
             return React.createElement("div", null);
         var options = filters.map(function (filter, index) {
-            return React.createElement("option", { key: index, selected: filter.filter === activeFilter, value: filter.filter }, filter.displayName ? filter.displayName : filter.filter);
+            return React.createElement("option", { id: filterKey + "-" + filter.displayName, key: index, selected: filter.filter === activeFilter, value: filter.filter }, filter.displayName ? filter.displayName : filter.filter);
         });
         var onChange = function (event) {
             onFilterChange(event.target.value);
@@ -38,7 +38,7 @@ var StaticFilter = /** @class */ (function (_super) {
                         title ? title : filterKey))),
             React.createElement("div", { className: css.searchFacets__facetControlContainer },
                 React.createElement("div", { className: css.searchFacets__facetControlList },
-                    React.createElement("select", { className: css.sorting__sortByControl, onChange: onChange }, options))));
+                    React.createElement("select", { className: css.sorting__sortByControl, onChange: onChange, id: filterKey }, options))));
         return (container);
     };
     return StaticFilter;

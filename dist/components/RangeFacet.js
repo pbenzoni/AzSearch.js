@@ -62,16 +62,18 @@ var RangeFacet = /** @class */ (function (_super) {
                 break;
         }
         var onLowerChange = function (e) {
-            var lower = Date.parse(e.target.value + " GMT-0800"); // adding timezones to deal with auto offsetting
-            var upper = Date.parse(upperValue + " GMT-0800");
-            lowerValue = e.target.value;
+            var target = e.hasOwnProperty("target") ? e.target.value : e;
+            var lower = Date.parse(target + "T00:00:00-08:00"); // adding timezones to deal with auto offsetting
+            var upper = Date.parse(upperValue + "T00:00:00-08:00");
+            lowerValue = target;
             onRangeChange(new Date(lower), new Date(upper));
             afterRangeChange();
         };
         var onUpperChange = function (e) {
-            var upper = Date.parse(e.target.value + " GMT-0800");
-            var lower = Date.parse(lowerValue + " GMT-0800");
-            upperValue = e.target.value;
+            var target = e.hasOwnProperty("target") ? e.target.value : e;
+            var upper = Date.parse(target + "T00:00:00-08:00");
+            var lower = Date.parse(lowerValue + "T00:00:00-08:00");
+            upperValue = target;
             onRangeChange(new Date(lower), new Date(upper));
             afterRangeChange();
         };

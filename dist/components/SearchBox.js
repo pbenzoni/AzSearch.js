@@ -31,12 +31,20 @@ var SearchBox = /** @class */ (function (_super) {
         if (newValue.method === "up" || newValue.method === "down") {
             return;
         }
-        var input = newValue.newValue.replace("^", "").replace("!", "-");
+        var input = this.sanitizeInput(newValue.newValue);
         // remove highlight tags for the stored input
         this.props.onInputChange(input);
         if (newValue.method === "click" || newValue.method === "enter") {
             this.props.clearFacetsAndSearch();
         }
+    };
+    SearchBox.prototype.sanitizeInput = function (input) {
+        var sanitized = "";
+        sanitized = input.replace("^", "").replace("!", "-");
+        if (sanitized.charAt(0) == "*") {
+            sanitized = sanitized.substr(1); // removes * if first char
+        }
+        return sanitized;
     };
     SearchBox.prototype.handleKeyDown = function (evt) {
         if (evt.key === "Enter") {

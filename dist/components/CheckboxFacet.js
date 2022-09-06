@@ -32,7 +32,7 @@ var CheckboxFacet = /** @class */ (function (_super) {
             var countDisplay = value.count ? "(" + Numeral(value.count).format("0,0") + ")" : "";
             return (React.createElement("li", { key: index + 1, className: css.searchFacets__facetControl },
                 React.createElement("div", { className: css.searchFacets__facetControlCheckboxWrapper },
-                    React.createElement("label", { className: "checkboxLabel" },
+                    React.createElement("label", { className: "checkboxLabel", id: "label" + facet.key + "-" + value.value + index },
                         React.createElement("input", { type: "checkbox", id: facet.key + "-" + value.value, className: css.searchFacets__facetControlCheckbox, onChange: toggleFacet.bind(null, valueKey), checked: value.selected }),
                         " ",
                         value.value + " ",
