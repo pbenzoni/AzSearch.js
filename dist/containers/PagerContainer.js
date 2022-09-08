@@ -28,7 +28,7 @@ function mapStateToProps(state, ownProps) {
         top: state.parameters.searchParameters.top,
         skip: state.parameters.searchParameters.skip,
         count: state.results.count,
-        showPager: state.results.results.length > 0,
+        showPager: true,
         css: ownProps.css
     };
 }
